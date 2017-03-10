@@ -1,0 +1,387 @@
+@CHARSET "UTF-8";
+
+span {
+	font-size: 20px;
+	color: blue;
+}
+
+/*标签选择器*/
+p {
+	line-height: 1.6em; /*行间距*/
+}
+
+h1 {
+	color: black;
+}
+
+/*类选择器*/
+.stress {
+	color: red;
+}
+
+.setGreen {
+	color: green;
+}
+
+.bigsize {
+	font-size: 25px;
+}
+
+/*ID选择器*/
+#stress {
+	color: red;
+}
+
+#setGreen {
+	color: green;
+}
+
+#bigsize {
+	font-size: 25px;
+}
+
+/*子选择器*/
+.first>span {
+	border: 1px solid red;
+}
+
+.food>li {
+	border: 1px solid red; /*添加边框样式(粗细为1px,颜色为红色的实线)*/
+}
+
+/*包含(后代)选择器*/
+.first1 span {
+	color: red;
+}
+
+.food1 li {
+	border: 1px solid red;
+}
+
+/*通用选择器*/
+/* * {
+	color: red;
+} */
+
+/*伪类选择符*/
+a:hover {
+	font-size: 20px;
+	color: red;
+}
+
+/*分组选择器*/
+/* h1,.first>span {
+	color: red;
+}
+.first,#second>span {
+	color: green;
+} */
+
+/*CSS的特殊性*/
+/* p {
+	color: red;
+}
+ */
+.firstP {
+	color: green; /*因为权值高显示为绿色*/
+}
+
+/* span {
+	color: pink; 设置为粉色
+}
+
+p span {
+	color: purple;
+} */
+
+/*CSS的层叠*/
+/* p {
+	color: red;
+}
+
+p {
+	color: green;
+}
+
+p {
+	color: pink!important;
+} */
+
+/*CSS格式化排版*/
+body {
+	font-family: "Microsoft Yahei"; /*字体*/
+	font-size: 16px; /*字号*/
+	color: black; /*颜色*/
+	/* font:12px/1.5em "宋体",sans-serif; */
+}
+
+p { /* font-weight: bold;粗体 */
+	/* font-style: italic;斜体 */
+	/* text-decoration: underline;下划线 */
+	
+}
+
+.oldPrice {
+	text-decoration: line-through; /*删除线*/
+	color: black;
+}
+
+p { /* text-indent: 2em;2个文字的缩进 */
+	/* line-height: 2em;行间距 */
+	/* letter-spacing: 20px;中文字间距 */
+	/* word-spacing: 20px;单词间距 */
+	
+}
+
+div {
+	text-align: left; /*对齐*/
+}
+
+/*CSS盒模型*/
+.block {
+	display: block;
+	background: pink;
+}
+
+.inline {
+	background: pink;
+}
+
+.inline_block {
+	display: inline-block;
+	background: pink;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+}
+
+.border1 {
+	border: 2px dotted #ccc;
+}
+
+.border2 li {
+	border-bottom: 1px dotted #ccc;
+}
+
+.wh li {
+	border-bottom: 1px dotted #ccc;
+	width: 200px;
+	height: 30px;
+}
+
+.padding {
+	width: 100px;
+	height: 100px;
+	padding: 10px;
+	border: 1px solid red;
+}
+
+.box {
+	width: 300px;
+	height: 300px;
+	border: 1px solid red;
+}
+
+.margin {
+	margin-bottom: 30px;
+}
+
+/*CSS布局模型*/
+.flow1 {
+	border: 1px solid red;
+}
+
+.wh {
+	width: 300px;
+	height: 100px;
+}
+
+.float {
+	width: 200px;
+	height: 200px;
+	border: 2px solid red;
+	/* float: right;right */
+}
+
+.float_left {
+	float: left;
+}
+
+.float_right {
+	float: right;
+}
+
+.layer_absolute1 {
+	width: 200px;
+	height: 200px;
+	border: 2px solid red;
+	position: absolute;
+	left: 100px;
+	top: 50px;
+}
+
+.layer_absolute2 {
+	width: 200px;
+	height: 200px;
+	border: 2px solid red;
+	position: absolute;
+	right: 100px;
+	top: 20px;
+}
+
+.layer_relative {
+	width: 200px;
+	height: 200px;
+	border: 2px solid red;
+	position: relative;
+	left: 400px;
+	top: 200px;
+}
+
+.layer_fixed {
+	width: 200px;
+	height: 200px;
+	border: 2px solid red;
+	background: pink;
+	/*position: fixed;
+	bottom: 0px;
+	right: 0px;*/
+}
+
+#layer_comb01 {
+	width: 200px;
+	height: 200px;
+	border: 2px solid red;
+	position: relative;
+}
+
+#layer_comb02 {
+	border: 2px solid red;
+	top: 20px;
+	left: 30px;
+	position: absolute;
+}
+
+#layer_comb11 {
+	width: 200px;
+	height: 200px;
+	border: 2px solid red;
+	position: relative;
+}
+
+#layer_comb12 {
+	border: 2px solid red;
+	position: absolute;
+	bottom: 0px;
+}
+
+/*CSS代码缩写*/
+.box_ab {
+	padding: 13px;
+	margin: 10px 40px;
+	color: gray;
+}
+
+.font_ab p {
+	font-style: normal;
+	font-variant: small-caps; /*小型的大写字母字体*/
+	font-weight: normal;
+	font-size: 16px;
+	color: gray;
+	line-height: 1.6em;
+	font-family: "宋体", sans-serif;
+	line-height: 1.6em; /*西文中没有衬线的字体*/
+}
+
+/*css样式设置小技巧*/
+.text_align {
+	text-align: center;
+	border: 1px solid red;
+	margin: 20px;
+}
+
+.fixed_block {
+	border: 1px solid red; /*为了显示居中效果明显为div设置了边框*/
+	width: 200px; /*定宽*/
+	margin: 20px auto;
+	/*margin-left与margin-right设置为auto;元素的上下margin是可以随意设置的*/
+}
+
+.unfixed_block_table {
+	margin: 0 auto;
+}
+
+.unfixed_block_table>ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.unfixed_block_display {
+	text-align: center;
+}
+
+.unfixed_block_display ul {
+	list-style: none;
+	margin: 0; /*消除文本与div边框之间的间隙*/
+	padding: 0; /*消除文本与div边框之间的间隙*/
+	display: inline;
+}
+
+.unfixed_block_display li {
+	margin-right: 8px; /*设置li文本之间的间隔*/
+	display: inline;
+}
+
+.unfixed_block_position {
+	float: left;
+	position: relative;
+	left: 50%;
+}
+
+.unfixed_block_position ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	left: 50%;
+}
+
+.unfixed_block_position li {
+	float: left;
+	display: inline;
+	margin-right: 8px;
+}
+
+.unfixed_block_un {
+	background: #ccc;
+	position: relative;
+	left: -50%;
+}
+
+.parent_height_fixed_single {
+	margin: 0;
+	height: 100px;
+	line-height: 100px;
+	background: #ccc;
+}
+
+.parent_height_fixed_multi1 {
+	height: 300px;
+	background: #ccc;
+	vertical-align: middle; /*td标签默认情况下就设置了vertical-align:middle*/
+}
+
+.parent_height_fixed_multi2 {
+	height: 300px;
+	background: #ccc;
+	display: table-cell; /*IE8以上及Chrome、Firefox*/
+	vertical-align: middle; /*IE8以上及Chrome、Firefox*/
+}
+
+.recessivity_change_display a {
+	position: absolute;
+	width: 200px;
+	background: #ccc;
+	margin-top: 10px;
+}
