@@ -29,16 +29,11 @@ span {
 table tr,td,th {
 	border: 1px solid #000;
 }
-
-a {
-	font-size: 24px;
-	font-weight: bold;
-}
 </style>
 </head>
 
 <body>
-	<a href="page/css.jsp" target="_blank" title="Cascading Style Sheets">css.jsp</a>
+    <a href="page/css.jsp" target="_blank" title="Cascading Style Sheets">css.jsp</a>
 
 	<!-- web开发基础技术需要掌握:
          1.HTML是网页内容的载体。
