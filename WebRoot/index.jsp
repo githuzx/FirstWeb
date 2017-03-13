@@ -33,8 +33,8 @@ table tr,td,th {
 </head>
 
 <body>
-    <a href="page/css.jsp" target="_blank" title="Cascading Style Sheets">css.jsp</a>
-
+	<a href="page/style.jsp" target="_blank" title="Cascading Style Sheets">css.jsp</a>
+	<a href="page/script.jsp" target="_blank" title="JavaScript">script.jsp</a>
 	<!-- web开发基础技术需要掌握:
          1.HTML是网页内容的载体。
          2.CSS样式是表现。
@@ -254,9 +254,12 @@ for(var i=1;i<=10;i++)
 	<p>使用a标签可实现超链接,它在网页制作中可以说是无处不在,只要有链接的地方,就会有这个标签。语法:title属性的作用,鼠标滑过链接文字时会显示这个属性的文本内容。这个属性在实际网页开发中作用很大,主要方便搜索引擎了解链接地址的内容(语义化更友好)。注意：还有一个有趣的现象不知道小伙伴发现了没有,只要为文本加入a标签后,文字的颜色就会自动变为蓝色(被点击过的文本颜色为紫色),颜色很难看吧,不过没有关系后面我们学习css样子就可以
 		设置过来,后面会详细讲解。在新建浏览器窗口中打开链接,a标签在默认情况下,链接的网页是在当前浏览器窗口中打开,有时我们需要在新的浏览器窗口中打开。target="_blank"</p>
 	<ul>
-		<li><a href="#" title="前端开发面试心法">前端开发面试心法</a></li>
-		<li><a href="#" title="零基础学习html">零基础学习html</a></li>
-		<li><a href="#" title="JavaScript全攻略">JavaScript全攻略</a></li>
+		<li><a href="#" title="前端开发面试心法">前端开发面试心法</a>
+		</li>
+		<li><a href="#" title="零基础学习html">零基础学习html</a>
+		</li>
+		<li><a href="#" title="JavaScript全攻略">JavaScript全攻略</a>
+		</li>
 	</ul>
 	<p>
 		1922年的春天，一个想要成名名叫尼克•卡拉威（<a href="http://www.m1905.com/mdb/star/3316/"
