@@ -16,9 +16,44 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <title>Java脚本</title>
-<!-- <script type="text/javascript">
-	document.write("开启JS之旅!");
-</script> -->
+<style type="text/css">
+input {
+	font-size: 10px;
+}
+
+.one {
+	width: 200px;
+	background-color: #CCC;
+}
+
+.two {
+	width: 400px;
+	background-color: pink;
+}
+
+.three {
+	border: 1px solid #eee;
+	width: 230px;
+	height: 50px;
+	background: #ccc;
+	color: red;
+}
+
+.four {
+	border: 1px solid #ccc;
+	width: 230px;
+	height: 50px;
+	background: #9CF;
+	color: blue;
+}
+
+#txt {
+	height: 400px;
+	width: 600px;
+	border: #333 solid 1px;
+	padding: 5px;
+}
+</style>
 <script src="resource/js/script.js"></script>
 </head>
 
@@ -143,19 +178,123 @@
 		返回值:1.点击确定按钮,文本框中的内容将作为函数返回值;2.点击取消按钮,将返回null。</p>
 	<input type="button" name="button" value="点击我,对成绩做评价!"
 		onclick="score()">
-		
+
 	<!-- 打开新窗口(window.open) -->
 	<p>open()方法可以查找一个已经存在或者新建的浏览器窗口。
-	语法:window.open([URL],[窗口名称],[参数字符串]) 参数说明:
-	URL-可选参数,在窗口中要显示网页的网址或路径。如果省略这个参数,或者它的值是空字符串,那么窗口就不显示任何文档。
-	窗口名称-可选参数,被打开窗口的名称。1.该名称由字母、数字和下划线字符组成;2.‘_top’(框架网页中在上部窗口中显示目标网页)、'_blank'(在新窗口显示目标网页)、‘_self’(在当前差窗口显示目标网页)具有特殊意义的名称;
-	3.相同name的窗口只能创建一个,要想创建多个窗口则name不能相同;4.name不能包含有空格。 参数字符串:可选参数,设置窗口参数,各参数用逗号隔开。
-	例如:打开http://www.imooc.com网站,大小为300px*200px,无菜单,无工具栏,有滚动条窗口:
-	window.open('http://www.imooc.com','_blank','width=300,height=200,menubar=no,toolbar=no,status=no,scrollbars=yes');注意:运行结果考虑浏览器兼容问题。
+		语法:window.open([URL],[窗口名称],[参数字符串]) 参数说明:
+		URL-可选参数,在窗口中要显示网页的网址或路径。如果省略这个参数,或者它的值是空字符串,那么窗口就不显示任何文档。
+		窗口名称-可选参数,被打开窗口的名称。1.该名称由字母、数字和下划线字符组成;2.‘_top’(框架网页中在上部窗口中显示目标网页)、'_blank'(在新窗口显示目标网页)、‘_self’(在当前差窗口显示目标网页)具有特殊意义的名称;
+		3.相同name的窗口只能创建一个,要想创建多个窗口则name不能相同;4.name不能包含有空格。
+		参数字符串:可选参数,设置窗口参数,各参数用逗号隔开。
+		例如:打开http://www.imooc.com网站,大小为300px*200px,无菜单,无工具栏,有滚动条窗口:
+		window.open('http://www.imooc.com','_blank','width=300,height=200,menubar=no,toolbar=no,status=no,scrollbars=yes');注意:运行结果考虑浏览器兼容问题。
 	</p>
 	<input type="button" name="button" value="点击我,打开新窗口" onclick="wopen()">
-	
+
 	<!-- 关闭窗口(window.close) -->
-	
+	<p>close()关闭窗口 用法：window.close();//关闭本窗口 或 窗口对象.close();//关闭指定的窗口</p>
+	<input type="button" value="新窗口打开网站" onclick="practise()">
+	<hr />
+
+	<h4>第3章 你也有控制权(DOM操作)</h4>
+	<!-- 认识DOM -->
+	<p>文档对象模型DOM(Document Object
+		Model)定义访问和处理HTML文档的标准方法。DOM将HTML文档呈现为带有元素、属性和文本的树结构(节点树)。
+		HTML文档可以说由节点构成的集合,三种常见的DOM节点: 1.元素节点:上图中html、body、p等都是元素节点,即标签;
+		2.文本节点:向用户展示的内容,如li中的JavaScript、DOM、CSS等文本; 3.属性节点:元素属性,如a标签的链接属性href。
+	</p>
+	<h2>
+		<!-- a-元素节点;href-属性节点;javascript DOM-文本节点 -->
+		<a href="http://www.imooc.com">javascript DOM</a>
+	</h2>
+	<p>对HTML元素进行操作,可添加、改变或移除CSS样式等</p>
+	<ul>
+		<li>JavaScript</li>
+		<li>DOM</li>
+		<li>CSS</li>
+	</ul>
+
+	<!-- 通过ID获取元素 -->
+	<p>通过HTML/CSS样式,都知道,网页由标签将信息组织起来,而标签的id属性值是唯一的,就像是没人有一个身份证号一样,只要通过身份证号就可以找到对应的人。那么在网页中,我们通过id先找到标签,然后进行操作。语法:document.getElementById("id")。
+		注:获取的元素是一个对象,如果想对元素进行操作,我们要通过它的元素或方法。</p>
+	<p id="con1">JavaScript</p>
+	<script type="text/javascript">
+		var mychar = document.getElementById("con1");
+		document.write("结果:" + mychar);//输出获取的p标签
+	</script>
+
+	<!-- innerHTML -->
+	<p>innerHTML属性用于获取或替换HTML元素的内容。语法:Object.innerHTML 注意:
+		1.Object是获取的元素对象,如通过document.getElementById("ID")获取的元素;2.注意书写,innerHTML区分大小写。
+	</p>
+
+	<p id="con2">Hello World!</p>
+	<script type="text/javascript">
+		var mycon = document.getElementById("con2");
+		document.write("p标签原始内容:" + mycon.innerHTML + "<br>");
+		//输入元素内容
+		mycon.innerHTML = "New Text!";//修改p元素内容
+		document.write("p标签修改后的内容:" + mycon.innerHTML);
+	</script>
+	<h2 id="con3">javascript</h2>
+	<p>JavaScript是一种基于对象、事件驱动的简单脚本语言,嵌入在HTML文档中,由浏览器负责解释和执行,在网页上产生动态的显示效果并实现与用户交互功能。</p>
+	<script type="text/javascript">
+		var mychar = document.getElementById("con3");
+		document.write("原标题:" + mychar.innerHTML + "<br>");
+		mychar.innerHTML = "Hello world!";
+		document.write("修改后的标题:" + mychar.innerHTML);
+	</script>
+
+	<!-- 改变HTML样式 -->
+	<p id="pcon">HTML
+		DOM允许JavaScript改变HTML元素的样式。语法:Object.style.property=new style;
+		注意:Object是获取的元素对象,如通过document.getElementById("id")获取的元素。基本属性表(backgroundColor|height|width|color|font|fontFamily|fontSize)
+		该表只是一小部分CSS样式属性,其它样式也可以通过该方法设置和修改。</p>
+	<script type="text/javascript">
+		var mychar = document.getElementById("pcon");
+		mychar.style.color = "white";
+		mychar.style.fontSize = "20";
+		mychar.style.backgroundColor = "blue";
+	</script>
+
+	<!-- 显示和隐藏(display属性) -->
+	<p>网页中经常会看到显示和隐藏的效果,可通过display属性来设置。语法:Object.style.display=vale;注意:Object是获取的元素对象,如通过document.getElementById("id")获取的元素。
+		value取值:none-此元素不会被显示(即隐藏);block-此元素将显示为块级元素。</p>
+	<h1>JavaScript</h1>
+	<p id="disCon">做为一个Web开发师来说,如果你想提供漂亮的网页、令用户满意的上网体验,JavaScript是必不可少的工具。</p>
+	<form>
+		<input type="button" value="不显示段落内容" onclick="hideText()"> <input
+			type="button" value="显示段落内容" onclick="showText()">
+	</form>
+
+	<!-- 控制类名(className) -->
+	<p>className属性设置或返回元素的class属性。语法:object.className=className
+		作用:1.获取元素的class属性;2.为网页内的某个元素指定一个css样式来更改该元素的外观。</p>
+	<p id="cn" class="one">JavaScript</p>
+	<form>
+		<input type="button" value="点我更改" onclick="modifyclass()" />
+	</form>
+	<p id="p3">JavaScript使网页显示动态效果并实现与用户交互功能。</p>
+	<input type="button" value="添加样式" onclick="add()">
+	<p id="p4" class="three">JavaScript使网页显示动态效果并实现与用户交互功能。</p>
+	<input type="button" value="更改外观" onclick="modify()">
+	<hr />
+
+	<h4>第4章 编程挑战</h4>
+	<h2>JavaScript课程</H2>
+	<div id="txt">
+		<h5>JavaScript为网页添加动态效果并实现与用户交互的功能。</h5>
+		<p>1. JavaScript入门篇，让不懂JS的你，快速了解JS。</p>
+		<p>2. JavaScript进阶篇，让你掌握JS的基础语法、函数、数组、事件、内置对象、BOM浏览器、DOM操作。</p>
+		<p>3.
+			学完以上两门基础课后，在深入学习JavaScript的变量作用域、事件、对象、运动、cookie、正则表达式、ajax等课程。</p>
+	</div>
+	<form>
+		<input type="button" value="改变颜色" onclick="dcolor()"> <input
+			type="button" value="改变宽高" onclick="dwh()"> <input
+			type="button" value="隐藏内容" onclick="dh()"> <input
+			type="button" value="显示内容" onclick="ds()"> <input
+			type="button" value="取消设置" onclick="dclear()">
+	</form>
 </body>
 </html>

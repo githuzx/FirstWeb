@@ -55,5 +55,71 @@ function wopen() {
 			'width=600,height=400,top=100,left=0');
 }
 
-/*关闭窗口*/
+/* 关闭窗口 */
+function wclose() {
+	var mywin = window.open('http://www.imooc.com');/* 将新打开的窗口对象,存储在变量mywin中 */
+	mywin.close();
+}
 
+function practise() {
+	if (confirm("确认打开新窗口吗?")) {
+		var url = prompt("请输入一个网址", "http://www.imooc.com/");
+		window.open(url, "_blank",
+				"width=400,height=400,menubar=no,toolbar=no,scrollbar=yes");
+	}
+}
+
+/* 显示和隐藏(display属性) */
+function hideText() {
+	document.getElementById("disCon").style.display = "none";
+}
+
+function showText() {
+	document.getElementById("disCon").style.display = "block";
+}
+
+/* 控制类名(className属性) */
+function modifyclass() {
+	var mychar = document.getElementById("cn");
+	mychar.className = "two";// 改变className
+}
+
+function add() {
+	var p3 = document.getElementById("p3");
+	p3.className = "three";
+}
+
+function modify() {
+	var p4 = document.getElementById("p4");
+	p4.className = "four";
+}
+
+/* 编程挑战 */
+function dcolor() {
+	var mychar = document.getElementById("txt");
+	mychar.style.color = "red";
+	mychar.style.background = "#ccc";
+}
+function dwh() {
+	var mychar = document.getElementById("txt");
+	mychar.style.width = "400px";
+	mychar.style.height = "200px";
+}
+function dh() {
+	var mychar = document.getElementById("txt");
+	mychar.style.display = "none";
+}
+function ds() {
+	var mychar = document.getElementById("txt");
+	mychar.style.display = "block";
+}
+function dclear() {
+	if (confirm("是否取消设置?")) {
+		var mychar = document.getElementById("txt");
+		mychar.style.color = "#000";
+		mychar.style.background = "#fff";
+		mychar.style.width = "600px";
+		mychar.style.height = "400px";
+		mychar.style.display = "block";
+	}
+}
