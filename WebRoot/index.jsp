@@ -35,6 +35,7 @@ table tr,td,th {
 <body>
 	<a href="page/style.jsp" target="_blank" title="Cascading Style Sheets">css.jsp</a>
 	<a href="page/script.jsp" target="_blank" title="JavaScript">script.jsp</a>
+	<a href="page/mysql.jsp" target="_blank" title="与MySQL的零距离接触">mysql.jsp</a>
 	<!-- web开发基础技术需要掌握:
          1.HTML是网页内容的载体。
          2.CSS样式是表现。
