@@ -138,7 +138,64 @@ mysql 参数
 .总结
 	</pre>
 	
-	<!--  -->
-	<h4></h4>
+	<!-- 约束以及修改数据表 -->
+	<h4>第3章 约束以及修改数据表</h4>
+	<pre>
+.外键约束的要求解析
+   约束保证数据的完整性和一致性
+   约束分为表级约束和列级约束
+   约束类型包括(not null、primary key、unique key、default、foreign key)
+ 
+   外键约束
+   保证数据一致性,完整性
+   实现一对一或一对多关系
+   
+   要求
+   父表和子表必须使用相同的存储引擎,而且禁止使用临时表
+   数据表的存储引擎只能为InnoDB
+   外键列和参照列必须具有相似的数据类型。其中数字的长度或是否有符号位必须相同;二字符的长度则可以不同
+   外键列和参照列必须创建索引。如果外键列不存在索引的话,MySQL将自动创建索引
+   
+   编辑数据表的默认存储引擎(MySQL配置文件default-storage-engine=InnoDB)
+ CREATE TABLE province(
+                      id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+                      pname VARCHAR(20) NOT NULL
+                      );
+ CREATE TABLE users(
+                    id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+                    username VARCHAR(10) NOT NULL,
+                    pid SMALLINT UNSIGNED,
+                    FOREIGN KEY (pid) REFERENCES province (id) ON DELETE CASCADE
+                   );
+.外键约束的参照操作
+ cascade:从父表删除或更新且自动删除或更新子表中匹配的行(ON DELETE CASCADE)         
+ set null:从父表删除或更新行,并设置子表中的外键列为null。如果使用该选项,必须保证子表列没有指定not null
+ restrict:拒绝对父表的删除或更新操作
+ no action:标准SQL的关键字,在MySQL中与restrict相同
+.表级约束与列级约束
+   对一个数据列建立的约束,称为列级约束
+   对多个数据列建立的约束,称为表级约束
+   列级约束既可以在列定义时声明,也可以在列定义以后声明
+   表级约束只能在列定以后声明
+.修改数据表-添加/删除列
+ ALTER TABLE tbl_name ADD [COLUMN] col_name column_definition [FIRST | AFTER col_name] //添加单列
+ ALTER TABLE tbl_name ADD [COLUMN] (col_name col_definition,...) //添加多列
+ ALTER TABLE tbl_name DROP [COLUMN] col_name //删除列
+.修改数据表-添加约束
+ ALTER TABLE tbl_name ADD [CONSTRAINT [SYMBOL]] PRIMARY KEY [index_type] (index_col_name,...) //添加主键约束
+ ALTER TABLE tbl_name ADD [CONSTRAINT [SYMBOL]] UNIQUE  KEY [index|key] [index_name] [index_type] (index_col_name,...) //添加唯一约束
+ ALTER TABLE tbl_name ADD [CONSTRAINT [SYMBOL]] FOREIGN KEY [index_name] (index_col_name,...) reference_definition //添加外键约束
+ ALTER TABLE tbl_name ALTER [COLUMN] col_name {SET DEFAULT literal | DROP DEFAULT} //添加/删除默认约束
+.修改数据表-删除约束
+ ALTER TABLE tbl_name DROP PRIMARY KEY //删除主键约束
+ ALTER TABLE tbl_name DROP {index|key} index_name //删除唯一约束
+ ALTER TABLE tbl_name DROP FOREIGN KEY fk_symbol //删除外键约束 
+.修改数据表-修改列定义和更名数据表
+ ALTER TABLE tbl_name MODIFY [COLUMN] col_name col_definition [FIRST|AFTER COL_NAME] //修改列定义
+ ALTER TABLE tbl_name CHANGE [COLUMN] old_col_name new_col_name col_definition [FIRST|AFTER COL_NAME] //修改列名称
+ ALTER TABLE tbl_name RENAME [TO|AS] new_tbl_name //数据表更名
+ RENAME TABLE tbl_name TO new_tbl_name //数据表更名
+.小结
+	</pre>
 </body>
 </html>
