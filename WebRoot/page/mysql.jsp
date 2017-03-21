@@ -94,5 +94,51 @@ mysql 参数
 
 	<!-- 数据类型与操作数据表 -->
 	<h4>第2章 数据类型与操作数据表</h4>
+	<pre>
+.整型
+  数据类型是指列、存储过程参数、表达式和局部变量的数据特征,它决定了数据的存储格式,代表了不同的信息类型。
+ tinyint、smallint、mediumint、int、bigint  
+.浮点型
+ float、double
+.日期时间型
+ year、time、date、datetime、timestamp
+.字符型
+ char、varchar、tinytext、text、mediumtext、longtext、enum、set
+.创建数据表
+ create table [if not exists] table_name(
+   column_name data_type,
+   ...
+ )  
+.查看数据表
+ show tables [from db_name]
+ [like 'pattern' | where expr]
+.查看数据表结构
+ show columns from tbl_name
+.记录的插入和查找
+ insert [into] tbl_name[(col_name,...)] values(val,...)
+ select expr,... from tbl_name
+.空值和非空
+ null
+ not null
+.自动编号
+ auto_increment
+  自动编号,且必须与主键组合使用
+  默认情况下,起始值为1,每次的增量为1
+.初涉主键约束
+  每张数据表只能存在一个主键
+  主键保证记录的唯一性
+  主键自动为not null 
+.初涉唯一约束
+ unique key
+   唯一约束可以保证记录的唯一性
+   唯一约束的字段可以为空值(NULL)
+   每张数据表可以存在多个唯一约束
+.初涉默认约束
+   当插入记录时,结果没有明确为字段赋值,则自动赋予默认值
+.总结
+	</pre>
+	
+	<!--  -->
+	<h4></h4>
 </body>
 </html>

@@ -29,6 +29,10 @@ span {
 table tr,td,th {
 	border: 1px solid #000;
 }
+
+a {
+	margin: 8px;
+}
 </style>
 </head>
 
