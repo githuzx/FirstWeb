@@ -237,5 +237,36 @@ mysql 参数
 .limit语句限制查询数量
 .小结
 	</pre>
+	
+	<!-- 子查询与连接 -->
+	<h4>第5章 子查询与连接</h4>
+	<pre>
+.数据准备
+.MySQL子查询简介
+ Subquery是指出现在其他SQL语句内的SELECT子句
+ SELECT * FROM t1 WHERE col1=(SELECT col2 FROM t2);
+  其中SELECT * FROM t1,称为Outer Query/Outer Statement
+ SELECT col2 FROM t2,称为SubQuery
+ 
+  子查询指嵌套在查询内部,且必须始终出现在圆括号内
+  子查询可以包括多个关键字或条件,如DISTINCT、GROUP BY、ORDER BY、LIMIT、函数等
+  子查询的外层查询可以是:SELECT,INSERT,UPDATE,SET或DO
+  子查询可以返回标量、一行、一列或子查询 
+.由比较运算符引发的子查询
+ =、>、<、>=、<=、<>、!=、<=>
+ operand comparison_operator subquery
+ 06:20
+.由[NOT]IN/EXISTS引发的子查询
+.使用INSERT...SELECT插入记录
+.多表更新
+.多表更新之一步到位
+.连接的语法结构
+.内连接INNER JOIN
+.外连接OUTER JOIN
+.多表连接
+.关于连接的几点说明
+.无限级分类表设计
+.多表删除
+	</pre>
 </body>
 </html>
