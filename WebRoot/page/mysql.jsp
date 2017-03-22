@@ -197,5 +197,45 @@ mysql 参数
  RENAME TABLE tbl_name TO new_tbl_name //数据表更名
 .小结
 	</pre>
+	
+	<!-- 操作数据表中的记录 -->
+	<h4>第4章 操作数据表中的记录</h4>
+	<pre>
+.插入记录INSERT
+ INSERT [INTO] tbl_name [(col_name,...)] {VALUES|VALUE} ({expr|DEFAULT},...),(...),...
+.插入记录INSERT SET-SELECT
+ INSERT [INTO] tbl_name SET col_name={expr|DEFAULT},... //与第一种方式的区别在于,此方法可以使用子查询(SubQuery)
+ INSERT [INTO] tbl_name [(col_name,...)] SELECT... //此方法可以将查询结果插入到指定数据表
+.单表更新记录UPDATE
+ UPDATE [LOW_PRIORITY] [IGNORE] table_reference SET col_name1={expr1|DEFAULT} [,col_name2={expr2|DEFAULT}]... [WHERE where_condition]
+.单表删除记录DELETE
+ DELETE FROM tbl_name [WHERE where_condition]
+.查询表达式解析
+ SELECT select_expr[,select_expr...]
+ [
+  FROM table_references
+  [WHERE where_condition]
+  [GROUP BY {col_name|position} [ASC|DESC],...]
+  [HAVING where_condition]
+  [ORDER BY {col_name|expr|position} [ASC|DESC],...]
+  [LIMIT {[offset,] row_count | row_count OFFSET offset}]  
+ ]
+
+ select_expr
+  每一个表达式表示想要的一列,必须有至少一个
+  每个列之间以英文逗号分隔
+  星号(*)表示所有列。tbl_name.*可以表示命名表的所有列
+  查询表达式可以使用[AS] alias_name为其赋予别名
+  别名可用于GROUP BY,ORDER BY或HAVING子句
+.where语句进行条件查询
+  条件表达式
+  对记录进行过滤,如果没有指定WHERE子句,则显示所有记录
+  在WHERE表达式中,可以使用MySQL支持的函数或运算符
+.group by语句对查询结果分组
+.having语句设置分组条件
+.order by语句对查询结果排序
+.limit语句限制查询数量
+.小结
+	</pre>
 </body>
 </html>
