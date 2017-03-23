@@ -255,13 +255,54 @@ mysql 参数
 .由比较运算符引发的子查询
  =、>、<、>=、<=、<>、!=、<=>
  operand comparison_operator subquery
- 06:20
+ 
+  用ANY、SOME或ALL修饰的比较运算符
+ operand comparison_operator ANY(subquery)
+ operand comparison_operator SOME(subquery)
+ operand comparison_operator ALL(subquery)
+           ANY           SOME           ALL 
+ >、>=     最小值                         最小值                         最大值
+ <、<=     最大值                         最大值                         最小值
+ =         任意值                        任意值
+ <>、!=                                 任意值
 .由[NOT]IN/EXISTS引发的子查询
+ operand comparison_operator [NOT] IN(subquery)
+ =ANY运算符与IN等效
+ !=ALL或<>ALL运算符与NOT IN等效
 .使用INSERT...SELECT插入记录
+ INSERT [INTO] tbl_name [(col_name,...)] SELECT... //将查询结果写入数据表 
 .多表更新
+ UPDATE table_references SET col_name1={expr1|DEFAULT}[,col_names={expr2|DEFAULT}]... [WHERE where_condition]
+ UPDATE tdb_goods INNER JOIN tdb_goods_cates ON goods_cate=cate_name SET goods_cate=cate_id;
 .多表更新之一步到位
+ CREATE TABLE [IF NOT EXISTS] tbl_name [(create_definition,...)] select_statement //创建数据表同时将查询结果写入到数据表
+ CREATE TABLE tdb_goods_brands(brand_id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,brand_name VARCHAR(40) NOT NULL) SELECT brand_name FROM tdb_goods GROUP BY brand_name;
+ UPDATE tdb_goods AS g INNER JOIN tdb_goods_brands AS b ON g.brand_name=b.brand_name SET g.brand_name=b.brand_id;
+ ALTER TABLE tdb_goods CHANGE goods_cate cate_id SMALLINT UNSIGNED NOT NULL,CHANGE brand_name brand_id UNSIGNED NOT NULL;
 .连接的语法结构
+ MySQL在SELECT语句、多表更新、多表删除语句中支持JOIN操作
+ table_reference
+ {[INNER|CROSS] JOIN | {LEFT|RIGHT} [OUTER] JOIN}
+ table_reference
+ ON conditional_expr
+ 
+ table_reference
+ tbl_name [[AS] alias]|table_subquery [AS] alias
+   数据表可以使用tbl_name AS alias_name 或tbl_name alias_name 赋予别名
+ table_subquery可以作为子查询使用在FROM子句中,这样的子查询必须为其赋予别名 
 .内连接INNER JOIN
+  在MySQL中,JOIN、CROSS JOIN和INNER JOIN是等价的
+  LEFT [OUTER] JOIN,左外连接  
+  RIGHT [OUTER] JOIN,右外连接
+  
+  使用ON关键字来设定连接条件,也可以使用WHERE来代替
+  通常使用ON关键字来设定连接条件,
+  使用WHERE关键字进行结果集记录的过滤
+
+  显示左表及右表符合连接条件的记录 //内连接
+ SELECT goods_id,goods_name,cate_name FROM tdb_goods INNER JOIN tdb_goods_cates ON tdb_goods.cate_id=tdb_goods_cates.cate_id;
+  
+ 
 .外连接OUTER JOIN
 .多表连接
 .关于连接的几点说明
