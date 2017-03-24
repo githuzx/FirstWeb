@@ -301,13 +301,28 @@ mysql 参数
 
   显示左表及右表符合连接条件的记录 //内连接
  SELECT goods_id,goods_name,cate_name FROM tdb_goods INNER JOIN tdb_goods_cates ON tdb_goods.cate_id=tdb_goods_cates.cate_id;
-  
- 
 .外连接OUTER JOIN
+  显示左表的全部记录及右表符合连接条件的记录 //左外连接
+  显示右表的全部记录及左表符合连接条件的记录 //右外连接 
 .多表连接
+ SELECT goods_id,goods_name,cate_name,brand_name,goods_price FROM tdb_goods 
+ INNER JOIN tdb_goods_cates ON tdb_goods.cate_id=tdb_goods_cates.cate_id
+ INNER JOIN tdb_goods_brands ON tdb_goods.brand_id=tdb_goods_brands.brand_id;
 .关于连接的几点说明
+  外连接
+ a LEFT JOIN b join_condition
+  数据表B的结果集以来数据表A
+  数据表A的结果集根据做连接条件以来所有数据表(B表除外)
+  左外连接条件决定如何检索数据表B(在没有指定WHERE条件的情况下)
+  如果数据表A的某条记录符合WHERE条件,但是在数据表B不存在符合条件的记录,将生成一个所有列为空的额外的B行
+  如果使用内连接查找的记录在连接数据表中不存在,并且在WHERE子句中尝试以下操作：col_namd IS NULL时,如果col_name被定义为NOT NULL,MySQL将在找到符合连执着条件的记录后停止搜索更多的行
 .无限级分类表设计
+ CREATE TABLE tdb_goods_types(type_id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,type_name varchar(20) NOT NULL,parent_id SMALLINT UNSIGNED NOT NULL DEFAULT 0);
+  同一个数据表对其自身进行连接 //自身连接
 .多表删除
+ DELETE tbl_name[.*][,tbl_name[.*]]... FROM table_references [WHERE where_condition] 
+ DELETE t1 FROM tdb_goods AS t1 LEFT JOIN(SELECT goods_id,goods_name FROM tdb_goods GROUP BY goods_name HAVING COUNT(goods_name>=2)) 
+ tdb_goods AS t2 ON t1.goods_name=t2.goods_name WHERE t1.goods_id>t2.goods_id;
 	</pre>
 </body>
 </html>
