@@ -324,5 +324,77 @@ mysql 参数
  DELETE t1 FROM tdb_goods AS t1 LEFT JOIN(SELECT goods_id,goods_name FROM tdb_goods GROUP BY goods_name HAVING COUNT(goods_name>=2)) 
  tdb_goods AS t2 ON t1.goods_name=t2.goods_name WHERE t1.goods_id>t2.goods_id;
 	</pre>
+	
+    <!-- 运算符和函数 -->
+    <h4>运算符和函数</h4>
+    <pre>
+.回顾和概述 
+.字符函数
+ CONCAT()    //字符连接
+ CONCAT_WS() //使用指定的分隔符进行字符连接
+ FORMAT()    //数字格式化
+ LOWER()     //转换成小写字母
+ UPPER()     //转换成大写字母
+ LEFT()      //获取左侧字符
+ RIGHT()     //获取右侧字符
+ LENGTH()    //获取字符串长度
+ LTRIM()     //删除前导空格
+ RTRIM()     //删除后续空格
+ TRIM()      //删除前导和后续空格
+ SUBSTRING() //字符串截取
+ [NOT] LIKE()//模式匹配
+ REPLACE()   //字符串替换
+
+ SELECT CONCAT('first_name','last_name') AS fullyname FROM test;
+ SELECT CONCAT_WS('-','imooc','MySQL','Functions');
+ SELECT FORMAT(12560.75,0); //千分位
+ SELECT LOWER('MySQL');
+ SELECT UPPER('mysql');
+ SELECT UPPER(LEFT('MySQL',2));
+ SELECT LOWER(RIGHT('MySQL',3));
+ SELECT LENGTH('My SQL');
+ SELECT LENGTH(LTRIM('  MySQL    '));
+ SELECT LENGTH(RTRIM('  MySQL    '));
+ SELECT LENGTH(TRIM('  MySQL    '));
+ SELECT TRIM(LEADING '?' FROM '??MySQL???'); //前导
+ SELECT TRIM(TRAILING '?' FROM '??MySQL???'); //后导
+ SELECT TRIM(BOTH '?' FROM '??MySQL???');
+ SELECT SUBSTRING('MySQL',1,2);
+ SELECT 'MySQL' LIKE 'M%';
+ SELECT * FROM test WHERE username LIKE '%o%';
+ SELECT REPLACE('??MySQL','?','');
+ SELECT * FROM test WHERE first_name LIKE '%1%%' ESCAPE '1';
+.数值运算符和函数
+ CEIL()     //进一取整
+ FLOOR()    //舍一取整
+ DIV()      //整数除法
+ MOD()      //取余数(取模)
+ POWER()    //幂运算
+ ROUND()    //四舍五入
+ TRUNCATE() //数字截取
+  
+ SELECT CEIL(3.01);
+ SELECT FLOOR(3.01);
+ SELECT 3 DIV 4; //0
+ SELECT 5 MOD 3; //2
+ SELECT POWER(3,3);
+ SELECT ROUND(3.652,0);
+ SELECT TRUNCATE(125.89,-1); //120
+.比较运算符和函数
+ [NOT] BETWEEN...AND... //[不]在范围之内
+ [NOT] IN()             //[不]在列出值范围内(数轴上的点)
+ IS [NOT] NULL          //[不]为空
+
+ SELECT 15 BETWEEN 1 AND 22;
+ SELECT 10 IN(5,10,15,20);
+ SELECT * FROM test WHERE first_name IS NULL;
+.日期时间函数
+
+ 
+.信息函数
+.聚合函数
+.加密函数
+    </pre>
+    
 </body>
 </html>
