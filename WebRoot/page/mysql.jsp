@@ -467,5 +467,70 @@ mysql 参数
  
  DROP FUNCTION [IF EXISTS] function_name;
     </pre>
+    
+    <!-- MySQL存储过程 -->
+    <h4>第8章 MySQL存储过程</h4>
+    <pre>
+.存储过程简介
+ SQL命令      ->      MySQL引擎(分析)      ->      语法正确
+                                                      ↓ 
+ 客户端      <-      执行结果(返回)        <-      可识别命令(执行)
+   
+ 存储过程是SQL语句和控制语句的预编译集合,以一个名称存储并作为一个单元处理
+ 
+ 优点
+ 增强SQL语句的功能和灵活性
+ 实现较快的执行速度
+ 减少网络流量 
+.存储过程语法结构解析
+ CREATE [DEFINER={user | CURRENT_USER}] PROCEDURE[prəˈsidʒɚ] sp_name ([proc_parameter[,...]]) [characteristic...] routine_body
+ 
+ proc_parameter:
+ [IN|OUT|INOUT] param_name_type
+ IN,表示该参数的值必须在调用存储过程时指定
+ OUT,表示该参数的值可以被存储过程改变,并且可以返回
+ INOUT,表示该参数在调用时指定,并且可以被改变和返回
+ 
+ 过程体由合法的SQL语句构成
+ 过程体可以是任意SQL语句 
+ 过程体如果为复合结构则使用BEGIN...END语句
+ 复合结构可以包含声明,循环,控制结构
+.创建不带参数的存储过程
+ CREATE PROCEDURE sp1() SELECT VERSION();
+ 
+ CALL sp_name([parameter[,...]])
+ CALL sp_name[()]
+.创建带有IN类型参数的存储过程
+ DELIMITER //
+ 
+ CREATE PROCEDURE removeUserById(IN p_id INT UNSIGNED)
+ BEGIN
+ DELETE FROM users WHERE id=id;
+ END
+ //
+  
+ DELIMITER ;
+.创建带有IN和OUT类型参数的存储过程
+ CREATE PROCEDURE removeUserAndReturnUserNums(IN p_id INT UNSIGNED,OUT userNums INT UNSIGNED)
+ BEGIN
+ DELETE FROM users WHERE id=p_id;
+ SELECT COUNT(id) FROM users INTO userNums;
+ END
+ //
+
+ CALL removeUserAndReturnUserNums(27,@nums);
+ SELECT @nums;
+.创建带有多个OUT类型参数的存储过程
+ CREATE PROCEDURE removeUserByAgeAndReturnInfos(IN p_age SMALLINT UNSIGNED,OUT deleteUsers SMALLINT UNSIGNED,OUT userCounts SMALLINT UNSIGNED)
+ BEGIN 
+ DELETE FROM user WHERE age=p_age;
+ SELECT ROW_COUNT() INTO deleteUsers;
+ SELECT COUNT(id) INTO userCounts;
+ END
+.存储过程与自定义函数的区别
+ 存储过程实现的功能要复杂一些;而函数的针对性更强
+ 存储过程可以返回多个值;函数只能有一个返回值
+ 存储过程一般独立的来执行;而函数可以作为其他SQL语句的组成部分来实现
+    </pre>
 </body>
 </html>
