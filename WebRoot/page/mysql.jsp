@@ -435,5 +435,37 @@ mysql 参数
  SET PASSWORD=PASSWORD('...');
     </pre>
     
+    <!-- 自定义函数 -->
+    <h4>第七章 自定义函数</h4>
+    <pre>
+.回顾和概述 
+.自定义函数简介
+ 用户自定义函数(user-defined function,UDF)是一种对MySQL扩展的途径,其用法与内置函数相同
+ 自定义函数的两个必要条件1.参数 2.返回值
+ 函数可以返回任意类型的值,同样可以接受这些类型的参数
+  
+ CREATE FUNCTION function_name RETURNS {STRING|INTEGER|REAL|DECIMAL} routine_body
+ 函数体由合法的SQL语句构成
+ 函数体可以是简单的SELECT或INSERT语句
+ 函数体如果为复合结构则使用BEGIN...END语句
+ 复合结构可以包含声明,循环,控制结构 
+.创建不带参数的自定义函数
+ SELECT DATE_FORMAT(NOW(),'%Y年%m月%d日 %H时:%i分:%s秒');
+ CREATE FUNCTION f1() RETURNS VARCHAR(30) RETURN DATE_FORMAT(now(),'%Y年%m月%d日 %H时:%i分:%s秒');
+.创建带有参数的自定义函数
+ CREATE FUNCTION f2(num1 SMALLINT UNSIGNED,num2 SMALLINT UNSIGNED) RETURNS FLOAT(10,2) UNSIGNED RETURN (num1+num2)/2;
+.创建具有复合结构函数体的自定义函数
+ delimiter //
+
+ CREATE FUNCTION adduser(username VARCHAR(20))
+ returns INT UNSIGNED
+ BEGIN
+ INSERT test(username) VALUES(username); 
+ RETURN last_insert_id();
+ END
+ //
+ 
+ DROP FUNCTION [IF EXISTS] function_name;
+    </pre>
 </body>
 </html>
