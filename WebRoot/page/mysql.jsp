@@ -389,11 +389,50 @@ mysql 参数
  SELECT 10 IN(5,10,15,20);
  SELECT * FROM test WHERE first_name IS NULL;
 .日期时间函数
-
+ NOW()         //当前日期和时间
+ CURDATE()     //当前日期
+ CURTIME()     //当前时间
+ DATE_ADD()    //日期变化
+ DATEDIFF()    //日期差值
+ DATE_FORMAT() //日期格式化
  
+ SELECT NOW();
+ SELECT CURDATE();
+ SELECT CURTIME();
+ SELECT DATE_ADD('2017-3-27',INTERVAL 370 DAY); //YEAR、WEEK
+ SELECT DATEDIFF('2017-3-27','2018-4-1');
+ SELECT DATE_FORMAT('2017-3-27','%m/%d/%Y'); 
 .信息函数
+ CONNECTION_ID() //连接ID
+ DATABASE()      //当前数据库
+ LAST_INERT_ID() //最后插入记录的ID号
+ USER()          //当前用户
+ SERSION()       //版本信息
+ 
+ SELECT CONNECTION_ID();
+ SELECT DATABASE();
+ SELECT LAST_INSERT_ID();
+ SELECT USER();
+ SELECT VERSION();
 .聚合函数
+ AVG()   //平均值
+ COUNT() //计数
+ MAX()   //最大值
+ MIN()   //最小值
+ SUM()   //求和
+ 
+ SELECT ROUND(AVG(goods_price),2) AS avg_price FROM tdb_goods;
+ SELECT COUNT(goods_id) AS counts FROM tdb_goods;
+ SELECT ROUND(MAX(goods_price),2) FROM tdb_goods;
+ SELECT ROUND(MIN(goods_price),2) FROM tdb_goods;
+ SELECT ROUNT(SUM(goods_price),2) FROM tdb_goods;
 .加密函数
+ MD5()      //信息摘要算法
+ PASSWORD() //密码算法
+ 
+ SELECT MD5('admin');
+ SELECT PASSWORD('admin');
+ SET PASSWORD=PASSWORD('...');
     </pre>
     
 </body>
