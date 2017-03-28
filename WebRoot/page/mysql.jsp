@@ -10,12 +10,12 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>与MySQL的零距离接触</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
+<title>与MySQL的零距离接触</title>
 </head>
 
 <body>
@@ -137,7 +137,7 @@ mysql 参数
    当插入记录时,结果没有明确为字段赋值,则自动赋予默认值
 .总结
 	</pre>
-	
+
 	<!-- 约束以及修改数据表 -->
 	<h4>第3章 约束以及修改数据表</h4>
 	<pre>
@@ -197,7 +197,7 @@ mysql 参数
  RENAME TABLE tbl_name TO new_tbl_name //数据表更名
 .小结
 	</pre>
-	
+
 	<!-- 操作数据表中的记录 -->
 	<h4>第4章 操作数据表中的记录</h4>
 	<pre>
@@ -237,7 +237,7 @@ mysql 参数
 .limit语句限制查询数量
 .小结
 	</pre>
-	
+
 	<!-- 子查询与连接 -->
 	<h4>第5章 子查询与连接</h4>
 	<pre>
@@ -324,10 +324,10 @@ mysql 参数
  DELETE t1 FROM tdb_goods AS t1 LEFT JOIN(SELECT goods_id,goods_name FROM tdb_goods GROUP BY goods_name HAVING COUNT(goods_name>=2)) 
  tdb_goods AS t2 ON t1.goods_name=t2.goods_name WHERE t1.goods_id>t2.goods_id;
 	</pre>
-	
-    <!-- 运算符和函数 -->
-    <h4>运算符和函数</h4>
-    <pre>
+
+	<!-- 运算符和函数 -->
+	<h4>运算符和函数</h4>
+	<pre>
 .回顾和概述 
 .字符函数
  CONCAT()    //字符连接
@@ -434,10 +434,10 @@ mysql 参数
  SELECT PASSWORD('admin');
  SET PASSWORD=PASSWORD('...');
     </pre>
-    
-    <!-- 自定义函数 -->
-    <h4>第七章 自定义函数</h4>
-    <pre>
+
+	<!-- 自定义函数 -->
+	<h4>第七章 自定义函数</h4>
+	<pre>
 .回顾和概述 
 .自定义函数简介
  用户自定义函数(user-defined function,UDF)是一种对MySQL扩展的途径,其用法与内置函数相同
@@ -467,10 +467,10 @@ mysql 参数
  
  DROP FUNCTION [IF EXISTS] function_name;
     </pre>
-    
-    <!-- MySQL存储过程 -->
-    <h4>第8章 MySQL存储过程</h4>
-    <pre>
+
+	<!-- MySQL存储过程 -->
+	<h4>第8章 MySQL存储过程</h4>
+	<pre>
 .存储过程简介
  SQL命令      ->      MySQL引擎(分析)      ->      语法正确
                                                       ↓ 
@@ -532,10 +532,10 @@ mysql 参数
  存储过程可以返回多个值;函数只能有一个返回值
  存储过程一般独立的来执行;而函数可以作为其他SQL语句的组成部分来实现
     </pre>
-    
-    <!-- MySQL存储引擎 -->
-    <h4>第9章 MySQL存储引擎</h4>
-    <pre>
+
+	<!-- MySQL存储引擎 -->
+	<h4>第9章 MySQL存储引擎</h4>
+	<pre>
 .存储引擎简介
  MySQL可以将数据以不同的技术存储在文件(内存)中,这种技术就称为存储引擎
  每一种存储引擎使用不同的存储机制、索引技巧、锁定水平,最终提供广泛且不同的功能
@@ -576,10 +576,10 @@ mysql 参数
  .通过修改数据表命令实现
   - ALTER TABLE tbl_name ENGINE [=] engine_name;
     </pre>
-    
-    <!-- MySQL图形化管理工具 -->
-    <h4>第10章 MySQL图形化管理工具</h4>
-    <pre>
+
+	<!-- MySQL图形化管理工具 -->
+	<h4>第10章 MySQL图形化管理工具</h4>
+	<pre>
 .图形管理工具之phpMyAdmin
 .图形管理工具之Navicat for MySQl
 .图形管理工具之MySQL Workbench

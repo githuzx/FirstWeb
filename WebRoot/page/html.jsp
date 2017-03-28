@@ -15,13 +15,8 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<title>标签元素</title>
+<title>HTML基础课程</title>
 <style type="text/css">
-/* h1 {
-	font-size: 12px;
-	color: #930;
-	text-align: center;
-} */
 span {
 	color: blue;
 }

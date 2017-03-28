@@ -15,18 +15,9 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<title>层叠样式表</title>
+<title>CSS基础课程</title>
 
 <style type="text/css">
-/* p {
-	font-size: 16px; 
-	color: black; 
-	font-weight: normal; 
-}
-
-span {
-	color: red;
-} */
 </style>
 
 <link href="resource/css/style.css" rel="stylesheet" type="text/css" />
