@@ -259,7 +259,239 @@ JavaScript创建动态页面。事件是可以被JavaScript侦测到的行为。
 	<!-- JavaScript内置对象 -->
 	<h4>第7章 JavaScript内置对象</h4>
 	<pre>
+//什么是对象
+JavaScript中的所有事物都是对象,如:字符串、数值、数组、函数等,每个对象带有属性和方法
+对象的属性:反应该对象某些特定的性质的,如:字符串的长度、图像的长宽等
+对象的方法:能够在对象上执行的动作。例如,表单的"提交"(Submit),时间的"获取"(getYear)等
+JavaScript提供多个內建对象,比如String、Date、Array等等,使用对象前先定义,如下使用数组对象:
+var objectName=new Array();//使用new关键字定义对象 
+或者
+var objectName=[];
+objectName.propertyName //访问对象属性
+objectName.methodName() //访问对象的方法
+
+//Date日期对象
+日期对象可以储存任意一个日期,并且可以精确到毫秒数(1/1000秒)
+var Udate=new Date(); //定义一个时间对象
+注意:使用关键字new,Date()的首字母必须大写
+如果要自定义初始值,可以用一下方法:
+var d=new Date(2012,10,1); //2012.10.01
+var d-new Date('Oct 1,2012'); //2012.10.01
+
+//返回/设置年份方法
+get/setFullYear() //返回/设置年份,用四位数表示
+var mydate=new Date(); //当前时间2014.03.06
+document.write(mydate+"<br>"); //输出当前时间 - Thu Mar 06 2014 10:57:47 GMT+0800
+document.write(mydate.getFullYear()+"<br />"); //输出当前年份 - 2014
+mydate.setFullYear(81); //设置年份
+document.write(mydate+"<br />"); //输出年份被设定为0081年 - Thu Mar 06 0081 10:57:47 GMT+0800
+注意:不同浏览器,mydate.setFullYear(81)结果不同,年份被设定为0081或81两种情况
+   1.结果格式依次为:星期、月、日、年、时、分、秒、时区。(火狐浏览器)
+   2.不同浏览器,时间格式有差异
+
+//返回星期方法
+getDay()返回星期,返回的是0-6,0表示星期天。如果要返回相对应"星期",通过数组完成,代码如下:
+<script type="text/javascript">
+	var mydate = new Date();//定义日期对象
+	var weekday = [ "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ];//定义数组对象,给每个数组项赋值
+	var mynum = mydate.getDay();//返回值存储在变量mynum中
+	document.write(mydate.getDay() + "<br>");//输出f=getDay()获取值
+	document.write("今天是:" + weekday[mynum]);//输出星期几
+</script>
+
+//返回/设置时间方法
+get/setTime()返回/设置时间,单位毫秒数,计算从1970.1.1 00：00:00到日期对象所指的日期的毫秒数
+如果将目前日期对象的时间推迟1小时,代码如下:
+<script type="text/javascript">
+	var mydate = new Date();
+	document.write("当前时间:" + mydate + "<br>");
+	mydate.setTime(mydate.getTime() + 60 * 60 * 1000);
+	document.write("推迟一小时时间:" + mydate);
+</script>
+注意:
+   1.一小时60分,一分60秒,一秒1000毫秒
+   2.时间推迟1小时,就是:"x.setTime(x.getTime()+60*60*1000);"
+   
+//String字符串对象
+在之前的学习中已经使用字符串对象了,定义字符串的方法就是直接复制。比如
+var mystr="I love JavaScript!";
+定义mystr字符串后,我们就可以访问它的属性和方法
+stringObject.length; //访问字符串对象的属性
+stringObject.toUpperCase();
+
+//返回指定位置的字符
+charAt()方法可返回指定位置的字符。返回的字符的长度为1的字符串
+stringObject.charAt(index) //必需。表示字符串中某个位置的数字,即字符在字符串中的下标
+注意:
+   1.字符串中第一个字符的下标是0。最后一个字符的下标为字符串长度减一(string.length-1)
+   2.如果参数index不在0与string.length-1之间,该方法将返回一个空字符串
+如:在字符串"I love JavaScript!"中,返回位置2的字符:
+<script type="text/javascript">
+	var mystr = "I love JavaScript!";
+	document.write(mystr.charAt(2)); //注意:一个空格也算一个字符
+</script>
+
+//返回指定的字符串首次出现的位置
+indexOf()方法可返回某个指定的字符串值在字符串中首次出现的位置
+stringObject.indexOf(substring,startpos) //substring:必需。规定需检索的字符串值 startpos:可选的整数参数。规定在字符串中开始检索的位置。它的合法取值是0到stringObject.length-1。如省略该参数,则将从字符串的首字母开始检索
+说明:
+   1.该方法将从头到尾地检索字符串stringObject,看它是否含有子串substring
+   2.可选参数,从stringObject的startpos位置开始查找substring,如果没有此参数将从stringObject的开始位置查找
+   3.如果找到一个substring,则返回substring的第一次出现的位置。stringObject中的字符位置是从0开始的
+注意:
+   1.indexOf()方法区分大小写
+   2.如果药检所的字符串值没有出现,则该方法返回-1
+例如:对"I love JavaScript!"字符串内进行不同的检索:
+<script type="text/javascript">
+	var str = "I love JavaScript!";
+	document.write(str.indexOf("I") + "<br/>");
+	document.write(str.indexOf("v") + "<br/>");
+	document.write(str.indexOf("v", 8));
+</script>
+
+//字符串分割
+split()方法将字符串分割为字符串数组,并返回此数组
+stringObject.split(separator,limit) //separator:必需。从该参数指定的地方分割stringObject limit:可选参数,分割的次数,如设置该参数,返回的子串不会多于这个参数指定的数组,如果无此参数为不限制次数
+注意:如果把空字符串用作separator,那么stringObject中的每个字符之间都会被分割
+我们按照不同的方式来分割字符串:
+使用指定符号分割字符串,代码如下:
+<script type="text/javascript">
+	var mystr = "www.imooc.com";
+	document.write(mystr.split(".") + "<br/>");
+	document.write(mystr.split(".", 2) + "<br/>");
+
+	//将字符串分割
+	document.write(mystr.split("") + "<br/>");
+	document.write(mystr.split("", 5));
+</script>
+
+//提取字符串
+substring()方法用于提取字符串中介于两个指定下标之间的字符
+stringObject.substring(startPos,stopPos) //startPos:必需。一个非负的整数,开始位置 stopPos:可选。一个非负的整数,结束位置，如果省略该参数那么返回的子串会一直到字符串对象的结尾
+注意:
+   1.返回的内容是从start开始(包含start位置的字符)到stop-1处的所有字符,其长度为stop减start
+   2.如果参数start和stop相等,那么该方法返回的就是一个空字符串(即长度为0的字符串)
+   3.如果start比stop大,那么该方法在提取子串之前会先交换这两个参数
+使用substring()从字符串中提取字符串,代码如下:
+<script type="text/javascript">
+	var mystr = "I love JavaScript";
+	document.write(mystr.substring(7) + "<br/>");
+	document.write(mystr.substring(2, 6));
+</script>
+
+//提取指定数目的字符
+substr()方法从字符串中提取从startPos位置开始的指定数目的字符串
+stringObject.substr(startPos,length) //startPos:必需。要提取的子串的起始位置。必须是数值 length:可选。提取字符串的长度。如果省略,返回从stringObject的开始startPos到stringObject的结尾的字符
+注意:如果参数startPos是负数,从字符串的尾部开始算起的位置。也就是说,-1指字符串中最后一个字符,-2指倒数第二个字符,以此类推
+          如果startPos为负数且绝对值大于字符串长度,startPos为0
+使用substr()从字符串中提取一些字符,代码如下:
+<script type="text/javascript">
+	var mystr = "I love JavaScript!";
+	document.write(mystr.substr(7) + "<br/>");
+	document.write(mystr.substr(2, 4));
+</script>
+
+//Math对象
+Math对象,提供对数据的数学计算
+使用Math的属性和方法,代码如下:
+<script type="text/javascript">
+	var myapi = Math.PI;
+	var myabs = Math.abs(-15);
+	document.write(myapi + "<br/>");
+	document.write(myabs);
+</script>
+注意:Math对象是一个固有的对象,无需创建它,直接把Math作为对象使用就可以调用其所有属性和方法。这是它与Date,String对象的区别
+
+//向上取整
+ceil()方法可对一个数进行向上取整
+Math.ceil(x) //x:必需。必需是一个数值 
+注意:它返回的是大于或等于x,并且与x最接近的整数
+我们将把ceil()方法运用到不同的数字上,代码如下:
+<script type="text/javascript">
+	document.write(Math.ceil(0.8) + "<br/>");
+	document.write(Math.ceil(6.3) + "<br/>");
+	document.write(Math.ceil(5) + "<br/>");
+	document.write(Math.ceil(3.5) + "<br/>");
+	document.write(Math.ceil(-5.1) + "<br/>");
+	document.write(Math.ceil(-5.9));
+</script>
+
+//向下取整
+floor()方法可对一个数进行向下取整
+Math.floor(x) //x:必需。必须是一个数值
+注意:返回的是小于或等于x,并且与x最接近的整数
+我们将在不同的数字上使用floor()方法,代码如下:
+<script type="text/javascript">
+	document.write(Math.floor(0.8) + "<br>");
+	document.write(Math.floor(6.3) + "<br>");
+	document.write(Math.floor(5) + "<br>");
+	document.write(Math.floor(3.5) + "<br>");
+	document.write(Math.floor(-5.1) + "<br>");
+	document.write(Math.floor(-5.9));
+</script>
+
+//四舍五入
+round()方法可把一个数字四舍五入为最近的整数
+Math.round(x) //x:必需。必须是数字
+注意:
+   1.返回与x最接近的整数
+   2.对于0.5,该方法将进行上舍入
+   3.如果x与两侧整数同等接近,则结果接近+∞方向的数字值。
+把不同的数舍入为最近的整数,代码如下:
+<script type="text/javascript">
+	document.write(Math.round(1.6) + "<br>");
+	document.write(Math.round(2.5) + "<br>");
+	document.write(Math.round(0.49) + "<br>");
+	document.write(Math.round(-6.4) + "<br>");
+	document.write(Math.round(-6.6));
+</script>
+
+//随机数
+random()方法可返回介于0~1之间的一个随机数
+Math.random();
+注意:返回一个大于或等于0但小于1的符号为正的数字值
+我们取得介于0-1之间的一个随机数,代码如下:
+<script type="text/javascript">
+	document.write(Math.random() + "<br>");
+	document.write((Math.random()) * 10 + "<br>");
+</script>
+注意:因为是随机数,所以每次运行结果不一样
     
-    </pre>
+//Array数组对象
+数组对象是一个对象的集合,里边的对象可以是不同类型的。数组的每一个成员都有一个"下标",用来表示它在数组中的位置,是从零开始的
+数组定义的方法:
+1.var 数组名=new Array(); //定义了一个空数组
+2.var 数组名=new Array(n); //定义时指定有几个空元素的数组
+3.var 数组名=[<元素1>,<元素2>,<元素3>...]; //定义数组的时候,直接初始化数据
+我们定义myArray数组,并赋值,代码如下:
+var myArray=[2,8,6];
+说明:定义了一个数组myArray,里边的元素是:myArray[0]=2;myArray[1]=8;myArray[2]=6
+数组名[下标]=值; //数组元素的使用
+数组属性:length用法:<数组对象>.length;返回:数组的长度,即数组里有多少个元素。它等于数组里最后一个元素的下标加一
+
+//数组连接
+concat()方法用于连接两个或多个数组。此方法返回一个新数组,不改变原来的数组
+arrayObject.concat(array1,array2,...,arrayN) 
+注意:该方法不会改变现有的数组,而仅仅会返回被连接数组的一个副本
+我们创建一个数组,将把concat()中的参数连接到数组myarr中,代码如下:
+<script type="text/javascript">
+	var mya = new Array(3);
+	mya[0] = "1";
+	mya[1] = "2";
+	mya[2] = "3";
+	document.write(mya.concat(4, 5) + "<br>");
+	document.write(mya+"<br>");
+
+	var mya1 = new Array("hello!");
+	var mya2 = new Array("I", "love");
+	var mya3 = new Array("JavaScript", "!");
+	var mya4 = mya1.concat(mya2, mya3);
+	document.write(mya4);
+</script>
+
+//指定分隔符连接数组元素    
+	
+	
+	</pre>
 </body>
 </html>
