@@ -480,7 +480,7 @@ arrayObject.concat(array1,array2,...,arrayN)
 	mya[1] = "2";
 	mya[2] = "3";
 	document.write(mya.concat(4, 5) + "<br>");
-	document.write(mya+"<br>");
+	document.write(mya + "<br>");
 
 	var mya1 = new Array("hello!");
 	var mya2 = new Array("I", "love");
@@ -490,8 +490,131 @@ arrayObject.concat(array1,array2,...,arrayN)
 </script>
 
 //指定分隔符连接数组元素    
+join()方法用于把数组中的所有元素放入一个字符串。元素是通过指定的分隔符进行分隔的
+arrayObject.join(分隔符) //separator:可选。指定要使用的分隔符。如果省略该参数,则使用逗号作为分隔
+注意:返回一个字符串,该字符串把数组中的各个元素串起来,用<分隔符>置于元素与元素之间。这个方法不影响数组原来的内容。我们是用join()方法,将数组的所有元素放入一个字符串中,代码如下:
+<script type="text/javascript">
+	var myarr = new Array(3);
+	myarr[0] = "I";
+	myarr[1] = "love";
+	myarr[2] = "JavaScript";
+	document.write(myarr.join("."));
+</script>
 	
+//颠倒数组元素顺序
+reverse()方法用于颠倒数组中元素的顺序
+arrayObject.reverse()
+注意:该方法会改变原来的数组,而不会创建新的数组
+定义数组myarr并赋值,然后颠倒其元素的顺序:
+<script type="text/javascript">
+	var myarr = new Array(3);
+	myarr[0] = "1";
+	myarr[1] = "2";
+	myarr[2] = "3";
+	document.write(myarr + "<br/>");
+	document.write(myarr.reverse());
+</script>
+
+//选定元素[slaɪs]
+slice()方法可从已有的数组中返回选定的元素
+arrayObject.slice(start,end) //start:必需。规定从何处开始选取。如果是负数,那么它规定从数组尾部开始算起的位置。也就是说,-1指最后一个元素,-2指倒数第二个元素,以此类推
+                             //end:可选。规定从何处结束选取。该参数是数组片段结束处的数组下标。如果没有指定该参数,那么分割数组包含从start到数组结束的所有元素。如果这个参数是负数,那么它规定的是从数组尾部开始算起的元素
+1.返回一个新的数组,包含从start到end(不包含该元素)的arrayObject中的元素
+2.该方法并不会修改数组,二十返回一个子数组
+
+注意:
+1.可使用负值从数组的尾部选取元素
+2.如果end未被规定,那么slice()方法会选取从start到数组结尾的所有元素
+3.String.slice()与Array.slice()相似
+我们将创建一个新数组,然后从其中选取的元素,代码如下:
+<script type="text/javascript">
+	var myarr = new Array(1, 2, 3, 4, 5, 6);
+	document.write(myarr + "<br>");
+	document.write(myarr.slice(2, 4) + "<br>");
+	document.write(myarr);
+</script>
+
+//数组排序
+sort()方法使数组中的元素按照一定的顺序排列
+arrayOnject.sort(方法函数) //方法函数:可选。规定排序顺序,必须是函数
+1.如果不指定<方法函数>,则按unicode码顺序排列
+2.如果指定<方法函数>,则按<方法函数>所指定的排序方法排序
+myarray.sort(sortMethod)
+注意:该函数要比较两个值,然后返回一个用于说明这两个值的相对顺序的数字。比较函数应该具有两个参数a和b,其返回值如下:
+          若返回值<=-1,则表示A在排序后的序列中出现在B之前
+          若返回值>-1&&<1,则表示A和B具有相同的排序顺序
+          若返回值>=1,则表示A在排序后的序列中出现在B之后
+1.使用sort()将数组进行排序,代码如下:
+<script type="text/javascript">
+	var myarr1 = new Array("Hello", "John", "love", "JavaScript");
+	var myarr2 = new Array("80", "16", "50", "6", "100", "1");
+	document.write(myarr1.sort() + "<br>");
+	document.write(myarr2.sort());
+</script>
+注意:上面的代码没有按照数值的大小对数字进行排序
+2.如果实现这一点,就必须使用一个排序函数,代码如下:
+<script type="text/javascript">
+	function sortNum(a, b) {
+		return a - b;//生序,如降序,把"a-b"改成"b-a"
+	}
+
+	var myarr = new Array("80", "16", "50", "6", "100", "1");
+	document.write(myarr + "<br>");
+	document.write(myarr.sort(sortNum));
+</script>
 	
+//编程练习 XXXX年XX月X日 星期X--班级总分为:81
+<script type="text/javascript">
+	//通过javascript的日期对象来得到当前的日期，并输出。
+	var date = new Date();//实例化日期对象
+	var timeStr = "";//日期
+	timeStr = date.getFullYear() + "年";
+	timeStr += date.getMonth() + 1 + "月";
+	timeStr += date.getDate() + "日";
+	var day = date.getDay();//星期
+	var week = "";
+	switch (day) {
+	case 0:
+		week = "星期日";
+		break;
+	case 1:
+		week = "星期一";
+		break;
+	case 2:
+		week = "星期二";
+		break;
+	case 3:
+		week = "星期三";
+		break;
+	case 4:
+		week = "星期四";
+		break;
+	case 5:
+		week = "星期五";
+		break;
+	case 6:
+		week = "星期六";
+		break;
+	}
+	timeStr += "&nbsp;" + week;
+	document.write(timeStr);//打印出日期
+
+	//成绩是一长窜的字符串不好处理，找规律后分割放到数组里更好操作哦
+	var scoreStr = "小明:87;小花:81;小红:97;小天:76;小张:74;小小:94;小西:90;小伍:76;小迪:64;小曼:76";
+
+	var arr = scoreStr.split(';');//按;符号进行数组分割
+	var sum = 0;
+	var avg = 0;
+	for ( var i = 0; i < arr.length; i++) {
+		var index = arr[i].indexOf(':');//根据:符号确定数字开始的位置
+		sum += parseInt(arr[i].substr(index + 1, 2));//parseInt()字符串类型转成整型
+	}
+	avg = sum / arr.length;
+	avg = Math.floor(avg);//取整
+
+	//从数组中将成绩撮出来，然后求和取整，并输出。
+	document.write("--班级总分为:" + avg);
+</script>		
 	</pre>
 </body>
 </html>
