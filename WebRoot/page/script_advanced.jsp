@@ -20,7 +20,12 @@
 pre {
 	margin: 0px;
 }
+
+input {
+	margin: 3px;
+}
 </style>
+<script src="resource/js/script_advanced.js"></script>
 </head>
 
 <body>
@@ -564,57 +569,390 @@ myarray.sort(sortMethod)
 </script>
 	
 //编程练习 XXXX年XX月X日 星期X--班级总分为:81
-<script type="text/javascript">
-	//通过javascript的日期对象来得到当前的日期，并输出。
-	var date = new Date();//实例化日期对象
-	var timeStr = "";//日期
-	timeStr = date.getFullYear() + "年";
-	timeStr += date.getMonth() + 1 + "月";
-	timeStr += date.getDate() + "日";
-	var day = date.getDay();//星期
-	var week = "";
-	switch (day) {
-	case 0:
-		week = "星期日";
-		break;
-	case 1:
-		week = "星期一";
-		break;
-	case 2:
-		week = "星期二";
-		break;
-	case 3:
-		week = "星期三";
-		break;
-	case 4:
-		week = "星期四";
-		break;
-	case 5:
-		week = "星期五";
-		break;
-	case 6:
-		week = "星期六";
-		break;
-	}
-	timeStr += "&nbsp;" + week;
-	document.write(timeStr);//打印出日期
-
-	//成绩是一长窜的字符串不好处理，找规律后分割放到数组里更好操作哦
-	var scoreStr = "小明:87;小花:81;小红:97;小天:76;小张:74;小小:94;小西:90;小伍:76;小迪:64;小曼:76";
-
-	var arr = scoreStr.split(';');//按;符号进行数组分割
-	var sum = 0;
-	var avg = 0;
-	for ( var i = 0; i < arr.length; i++) {
-		var index = arr[i].indexOf(':');//根据:符号确定数字开始的位置
-		sum += parseInt(arr[i].substr(index + 1, 2));//parseInt()字符串类型转成整型
-	}
-	avg = sum / arr.length;
-	avg = Math.floor(avg);//取整
-
-	//从数组中将成绩撮出来，然后求和取整，并输出。
-	document.write("--班级总分为:" + avg);
-</script>		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	</pre>
+	<script type="text/javascript">
+		//通过javascript的日期对象来得到当前的日期，并输出。
+		var date = new Date();//实例化日期对象
+		var timeStr = "";//日期
+		timeStr = date.getFullYear() + "年";
+		timeStr += date.getMonth() + 1 + "月";
+		timeStr += date.getDate() + "日";
+		var day = date.getDay();//星期
+		var week = "";
+		switch (day) {
+		case 0:
+			week = "星期日";
+			break;
+		case 1:
+			week = "星期一";
+			break;
+		case 2:
+			week = "星期二";
+			break;
+		case 3:
+			week = "星期三";
+			break;
+		case 4:
+			week = "星期四";
+			break;
+		case 5:
+			week = "星期五";
+			break;
+		case 6:
+			week = "星期六";
+			break;
+		}
+		timeStr += "&nbsp;" + week;
+		document.write(timeStr);//打印出日期
+
+		//成绩是一长窜的字符串不好处理，找规律后分割放到数组里更好操作哦
+		var scoreStr = "小明:87;小花:81;小红:97;小天:76;小张:74;小小:94;小西:90;小伍:76;小迪:64;小曼:76";
+
+		var arr = scoreStr.split(';');//按;符号进行数组分割
+		var sum = 0;
+		var avg = 0;
+		for ( var i = 0; i < arr.length; i++) {
+			var index = arr[i].indexOf(':');//根据:符号确定数字开始的位置
+			sum += parseInt(arr[i].substr(index + 1, 2));//parseInt()字符串类型转成整型
+		}
+		avg = sum / arr.length;
+		avg = Math.floor(avg);//取整
+
+		//从数组中将成绩撮出来，然后求和取整，并输出。
+		document.write("--班级总分为:" + avg);
+	</script>
+
+	<!-- 浏览器对象 -->
+	<h4>第8章 浏览器对象</h4>
+	<pre>
+//window对象
+window对象是BOM的核心,window对象指当前的浏览器窗口
+注意:在JavaScript基础篇中,已讲解了部分属性,window对象重点讲解计时器
+
+//JavaScript计时器
+在JavaScript中,我们可以在设定的时间间隔之后来执行代码,而不是在函数被调用后立即执行
+计算器类型:
+一次性计时器:仅在指定的延迟时间之后触发一次
+间隔性触发计时器:每隔一定的时间间隔就触发一次
+
+//计时器setInterval()
+在执行时,从载入页面后每隔指定的时间执行代码
+setInterval(代码,交互时间) //代码:要调用的函数或要执行的代码串 交互时间:周期性执行或调用表达式之间的时间间隔,以毫秒计(1s=1000ms)
+返回值:
+一个可以传递给clearInterval()从而取消对‘代码’的周期性执行的值
+调用函数格式(假设有一个clock()函数):
+setInterval("clock()",1000) | setInterval(clock,1000)
+我们设置一个计时器,每隔100毫秒调用clock()函数,并将时间显示出来,代码如下:
+
+//取消计时器clearInterval()
+clearInterval()方法可取消由setinterval()设置的交互时间
+clearInterval(id_of_setInterval) //id_of_setInterval:由setInterval()返回的ID值
+每隔100毫秒调用clock()函数,并显示时间。当点击按钮时,停止时间,代码如下:
+
+//计时器setTimeout()
+setTimeout()计时器,在载入后延迟指定时间后,去执行一次表达式,仅执行一次
+setTimeout(代码,延迟时间) //代码:要调用的函数或要执行的代码串 延迟时间:在执行代码前需等待的时间,以毫秒为单位(1s=1000ms)
+当我们打开网页3秒后,在弹出一个提示框,代码如下:
+要创建一个运行于无限循环的计数器,我们需要编写一个函数来调用其自身。在下面的代码,当按钮被点击后,输入域便从0开始计数
+
+//取消计时器clearTimeout()
+setTimeout()和clearTimeout()一起使用,停止计数器
+clearTimeout(id_of_setTimeout) //id_of_setTimeout:由setTimeout()返回的ID值。该值标识要取消的延迟执行代码块
+下面的例子和上节的无穷循环的例子相似。唯一不同是,现在我们添加了一个"Stop"按钮来停止这个计数器:
+	</pre>
+	<form>
+		<input type="text" id="clock" size="50" /> <input type="button"
+			value="stop" onClick="stop()" /><br /> <input type="button"
+			value="start" onClick="tinfo()" /><br /> <input type="text"
+			id="txt" /> <input type="button" value="Start" onClick="numCount()" />
+		<input type="button" value="Stop" onClick="stopCount()" /><br />
+	</form>
+
+	<pre>
+//History对象
+history对象记录了用户曾经浏览过的页面(URL),并可以实现浏览器前进或后退相似导航的功能
+注意:从窗口被打开的那一刻开始记录,每个浏览器窗口、每个标签页乃至每个框架,都有自己的history对象与特定的window对象关联
+window.history.[属性|方法] 
+注意:window可以省略
+History对象属性
+            -length:返回浏览器历史列表中的URL数量
+History对象方法
+            -back():加载history列表中的前一个URL
+            -forward():加载history列表中的下一个URL
+            -go():加载history列表中的某个具体的页面
+使用length属性,当前窗口的浏览历史总长度,代码如下:
+<script type="text/javascript">
+	var HL = window.history.length;
+	document.write(HL);
+</script>
+
+//返回前一个浏览的页面
+back()方法,加载history列表中的前一个URL
+window.history.back()
+比如,返回前一个浏览的页面,代码如下:
+注意:等同于点击浏览器的倒退按钮
+back()相当于go(-1),代码如下:
+window.history.go(-1);
+
+//返回下一个浏览的页面
+forward()方法,加载history列表中的下一个URL
+如果倒退之后,再想回到倒退之前浏览的页面,则可以使用forward()方法,代码如下:
+window.history.forward();//等价点击前进按钮
+forward()相当于go(1),代码如下:
+window.history.go(1);
+
+//返回浏览历史中的其他页面
+go()方法,根据当前所处的页面,加载history列表中的某个具体的页面
+window.history.go(number); //number:1-前一个,go(1)等价于forward() 0-当前页面 -1-后一个,go(-1)等价back() 其它数值-要访问的URL在History的URL列表中的相对位置
+浏览器中,返回当前页面之前浏览过的第二个历史页面,代码如下:
+window.history.go(-2); //注意:和在浏览器中单击两次后退按钮操作一样
+同理,返回当前页面之后浏览过的第三个历史页面,代码如下:
+window.history.go(3);
+
+//Location对象
+location用于获取或设置窗体的URL,并且可以用于解析URL
+location.[属性|方法]
+location对象属性图示:
+
+/                              href                                 \
+protocol/      host      \ pathname/       search        \    hash
+http://www.imooc.com:8080/list.php?courseid=8&charpterid=86#mediaid118
+          hostname   port
+
+//Navigator对象
+Navigator对象包含有关浏览器的信息,通常用于检测浏览器与操作系统的版本
+查看浏览器的名称和版本,代码如下:
+<script type="text/javascript">
+	var browser = navigator.appName;
+	var b_version = navigator.appVersion;
+	document.write("Browser name:" + browser);
+	document.write("<br>");
+	document.write("Browser version:" + b_version);
+</script>
+
+//userAgent
+返回用户代理头的字符串表示(就是包括浏览器版本信息等的字符串)
+navigator.userAgent
+几种浏览的user_agent,像360的兼容模式用的是IE、极速模式用的是chrom的内核
+使用userAgent判断使用的是什么浏览器(假设是用的是IE8浏览器),代码如下:
+	<form>
+		<input type="button" value="查看浏览器" onclick="validB()">
+	</form>
+
+//screen对象
+screen对象用于获取用户的屏幕信息
+window.screen.属性
+
+//屏幕分辨率的高和宽
+window.screen对象包含有关用户屏幕的信息
+1.screen.height返回屏幕分辨率的高
+2.screen.width返回屏幕分辨率的宽
+注意:
+1.单位以像素计
+2.window.screen对象在编写时可以不使用window这个前缀。我们来获取屏幕的高和宽,代码如下:
+<script type="text/javascript">
+	document.write("屏幕宽度:" + screen.width + "px<br/>");
+	document.write("屏幕高度:" + screen.height + "px<br/>");
+</script>
+
+//屏幕可用高和宽度
+1.screen.availWidth属性返回访问者屏幕的宽度,以像素计,减去界面特性,比如任务栏
+2.screen.availHeight属性返回访问者屏幕的高度,以像素计,减去界面特性,比如任务栏
+注意:
+不同系统的任务栏默认高度不一样,及任务栏的位置可在屏幕上下左右任何位置,所以有可能可用宽度和高度不一样
+我们来获取屏幕的可用高和宽度,代码如下:
+<script type="text/javascript">
+	document.write("可用宽度:" + screen.availWidth);
+	document.write("可用高度:" + screen.availHeight);
+</script>
+
+//编程练习
+	</pre>
+	<!--先编写好网页布局-->
+	<h4>操作成功</h4>
+	<p>
+		<b id="second">5</b> 秒后回到主页&nbsp; <a href="javascript:goBack()">返回</a>
+	</p>
+	<script type="text/javascript">
+		//获取显示秒数的元素，通过定时器来更改秒数。
+		var sec = document.getElementById("second");
+		var i = 5;
+		var timer = setInterval(function() {
+			i--;
+			sec.innerHTML = i;
+			if (i == 1) {
+				//window.location.href = "http://www.imooc.com/";
+				clearInterval(timer);
+			}
+		}, 1000);
+
+		//通过window的location和history对象来控制网页的跳转。
+		function goBack() {
+			window.history.go(-1);
+		}
+	</script>
+
+	<!-- DOM对象,控制HTML元素 -->
+	<h4>第9章 DOM对象,控制HTML元素</h4>
+	<pre>
+//认识DOM
+文档对象模型DOM(Document Object Model)定义访问和处理HTML文档的标准方法。DOM将HTML文档呈现为带有元素、属性和文本的树结构(节点树)
+HTML文档可以说由节点构成的集合,DOM节点有:
+1.元素节点:html、body、p等都是元素节点,即标签
+2.文本节点:向用户展示的内容,li中的JavaScript、DOM、CSS等文本
+3.属性节点:元素属性,如a标签的链接属性href
+节点属性:
+nodeName:返回一个字符串,其内容是给定节点的名字
+nodeType:返回一个整数,这个数值代表给定节点的类型
+nodeValue:返回给定节点的当前值
+
+遍历节点树:
+childNodes:返回一个数组,这个数组由给定元素节点的子节点构成
+firstChild:返回第一个子节点
+lastChild:返回最后一个子节点
+parentNode:返回一个给定节点的父节点
+nextSibling:返回给定节点的下一个子节点
+previousSibling:返回给定节点的上一个子节点
+
+DOM操作:
+createElement(element):创建一个新的元素节点
+createTextNode():创建一个包含着给定文本的新文本节点
+appendChild():指定节点的最后一个子节点列表之后添加一个新的子节点
+insertBefore():将一个给定节点插入到一个给定元素节点的给定子节点的前面
+removeChild():从一个给定元素中删除一个子节点
+replaceChild():把一个给定父元素的一个子节点替换为另外一个节点
+注意:前两个是document方法
+
+//getElementsByName()方法
+返回带有指定名称的节点对象的集合
+document.getElementsByName(name)
+注意:
+1.因为文档中的name属性可能不唯一,所有getElementsByName()方法返回的是元素的数组,而不是元素
+2.和数组类似也有length属性,可以和访问数组一样的方法来访问,从0开始
+
+//getElementsByTagName()方法
+返回带有指定标签名的节点对象的集合。返回元素的顺序是它们在文档中的顺序
+document.getElementByTagName(Tagname)
+说明:
+1.Tagname是标签的名称,如p、a、img等标签名
+2.和数组类似也有length属性,可以和访问数组一样的方法来访问,所以从0开始
+
+//区别ById/ByName/ByTagName
+以人来举例说明,人有能标志身份的身份证,有姓名,有类别(大人、小孩、老人)等
+1.ID是一个人的身份证号码,是唯一的。所以通过getElementById获取的是指定的一个人
+2.Name是它的名字,可以重复。所以通过getElementsByName获取名字相同的人的集合
+3.TagName可看似某类,getElementsByTagName获取相同类的人集合
+
+//getAttribute()方法
+通过元素节点的属性名称获取属性的值
+elementNode.getAttribute(name) 
+说明:
+1.elementNode:使用getElementById()、getElementsByTagName()等方法,获取到的元素节点
+2.name:要想查询的元素节点的属性名字
+
+//setAttribute()方法
+setAttribute()方法增加一个指定名称和值的新属性,或者把一个现有的属性设定为指定的值
+elementNode.setAttribute(name,value)
+说明:
+1.name:要设置的属性名
+2.value:要设置的属性值
+注意:
+1.把指定的属性设置为指定的值。如果不存在具有指定名称的属性,该方法将创建一个新属性
+2.类似于getAttribute()方法,setAttribute()方法只能通过元素节点对象调用的函数
+
+//节点属性
+在文档对象模型(DOM)中,每个节点都是一个对象。DOM节点有三个重要的属性:
+1.nodeName:节点的名称
+2.nodeValue:节点的值
+3.nodeType:节点的类型
+一、nodeName属性:节点的名称,是只读的
+   1.元素节点的nodeName与标签名相同
+   2.属性节点的nodeName是属性的名称
+   3.文本节点的nodeName永远是#text
+   4.文档节点的nodeName永远是#document
+二、nodeValue属性:节点的值
+   1.元素节点的nodeValue是undefined或null
+   2.文本节点的nodeValue是文本自身
+   3.属性节点的nodeValue是属性的值
+三、nodeType属性:节点的类型,是只读的。以下常用的集中节点类型:
+       元素 - 1
+       属性 - 2
+       文本 - 3
+       注释 - 8
+       文档 - 9
+
+//访问子节点childNodes
+访问选定元素节点下的所有子节点的列表,返回的值可以看做是一个数组,它具有length属性
+elementNode.childNodes
+注意:
+如果选定的节点没有子节点,则该属性返回不包含节点的NodeList
+注意:
+1.IE全系列------
+2.
+
+	</pre>
+	<a name="alink" href="#">我是链接一</a>
+	<br />
+	<a name="alink" href="#">我是链接二</a>
+	<br />
+	<a name="alink" href="#">我是链接三</a>
+	<br />
+	<input type="button" value="看看有几个链接?" onclick="getElements()" />
+	<ul>
+		<li>JavaScript</li>
+		<li>JQuery</li>
+		<li>HTML</li>
+		<li>JAVA</li>
+		<li>PHP</li>
+	</ul>
+	<script type="text/javascript">
+		var list = document.getElementsByTagName("li");//获取所有的li集合
+		var li = list[0];//访问无序列表:[0]索引
+		document.write(list.length + "<br/>");//获取list的长度
+		document.write(li.innerHTML + "<br/>");//弹出li节点对象的内容
+	</script>
+	<h1 id="h1" title="getAttribute()获取标签的属值" onclick="hattr()">点击我,获取标签属值</h1>
+	<ul>
+		<li>javascript</li>
+		<li>jQuery</li>
+		<li>PHP</li>
+	</ul>
+	<script type="text/javascript">
+		var list = document.getElementsByTagName("ul")[1].childNodes;
+		document.write("UL子节点个数:" + list.length + "<br>");
+		document.write("节点类型:" + list[0].nodeType + "<br>");
+	</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
