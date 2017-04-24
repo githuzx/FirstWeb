@@ -24,6 +24,66 @@ pre {
 input {
 	margin: 3px;
 }
+
+.message {
+	width: 200px;
+	height: 100px;
+	background-color: #CCC;
+}
+
+/*编程挑战*/
+/* * {
+	padding: 0px;
+	margin: 0px;
+	font: 12px normal "microsoft yahei";
+} */
+
+#tabs {
+	width: 290px;
+	padding: 5px;
+	height: 150px;
+	margin: 20px;
+}
+
+#tabs ul {
+	list-style: none;
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	border-bottom: 2px saddlebrown solid;
+}
+
+#tabs ul li {
+	background: #fff;
+	cursor: pointer;
+	float: left;
+	list-style: none;
+	height: 28px;
+	line-height: 28px;
+	margin: 0px 3px;
+	border: 1px solid #aaaaaa;
+	border-bottom: none;
+	display: inline-block;
+	width: 60px;
+	text-align: center;
+}
+
+#tabs ul li.on {
+	border-top: 2px solid saddlebrown;
+	border-bottom: 2px solid #fff;
+}
+
+#tabs div {
+	height: 120px;
+	line-height: 25px;
+	border: 1px solid #336699;
+	border-top: none;
+	padding: 5px;
+}
+
+.hide {
+	display: none;
+}
 </style>
 <script src="resource/js/script_advanced.js"></script>
 </head>
@@ -567,19 +627,7 @@ myarray.sort(sortMethod)
 	document.write(myarr + "<br>");
 	document.write(myarr.sort(sortNum));
 </script>
-	
 //编程练习 XXXX年XX月X日 星期X--班级总分为:81
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	</pre>
 	<script type="text/javascript">
 		//通过javascript的日期对象来得到当前的日期，并输出。
@@ -746,9 +794,7 @@ Navigator对象包含有关浏览器的信息,通常用于检测浏览器与操�
 navigator.userAgent
 几种浏览的user_agent,像360的兼容模式用的是IE、极速模式用的是chrom的内核
 使用userAgent判断使用的是什么浏览器(假设是用的是IE8浏览器),代码如下:
-	<form>
-		<input type="button" value="查看浏览器" onclick="validB()">
-	</form>
+<input type="button" value="查看浏览器" onclick="validB()">
 
 //screen对象
 screen对象用于获取用户的屏幕信息
@@ -898,10 +944,137 @@ elementNode.childNodes
 注意:
 如果选定的节点没有子节点,则该属性返回不包含节点的NodeList
 注意:
-1.IE全系列------
-2.
+1.IE全系列、firefox、chrome、opera、safari兼容问题
+2.节点之间的空白符,在firefox、chrome、opera、safari浏览器就是文本节点,所以IE是3,其它浏览器是7,如下图所示:
 
+//访问子节点的第一和最后项
+一、firstChild属性返回‘childNodes’数组的第一个子节点。如果选定的节点没有子节点,则该属性返回NULL
+  node.firstChild //与elementNode.childNodes[0]是同样的效果
+二、lastChild属性返回'childNodes'数组的最后一个子节点。如果选定的节点没有子节点,则该属性返回NULL
+  node.lastChild //与elementNode.childNodes[elementNode.childNodes.length-1]是同样的效果
+注意:
+   上一节中,我们知道Internet Explorer会忽略节点之间生成的空白文本节点,而其它浏览器不会。我们可以通过检测节点类型,过滤子节点
+
+//访问父节点parentNode
+获取指定节点的父节点
+elementNode.parentNode
+注意:父节点只能有一个
+看看下面的例子,获取P节点的父节点,代码如下:
+访问祖节点:
+elementNode.parentNode.parentNode
+注意:
+浏览器兼容问题,chrome、firefox等浏览器标签之间的空白也算是一个文本节点
+
+//访问兄弟节点
+1.nextSibling属性可返回某个节点之后紧跟的节点(处于同一树层级中)
+nodeObject.nextSibling //如果无此节点,该属性返回null
+2.previousSibling属性可返回某个节点之前紧跟的节点(处于同一树层级中)
+nodeObject.previousSibling //如果无此节点,则该属性返回null
+注意:
+        两个属性获取的是节点。Internet Explorer会忽略节点间生成的空白文本节点(如,换行符号),而其它浏览器不会忽略
+解决问题方法:
+判断节点nodeType是否为1,如果为元素节点,跳过
+
+//插入节点appendChild()
+在指定节点的最后一个子节点列表之后添加一个新的子节点
+appendChild(newnode) //newnode:指定追加的节点
+我们来看看,div标签内创建一个新的P标签,代码如下:
+
+//插入节点insertBefore()
+insertBefore()方法可在已有的子节点前插入一个新的子节点
+insertBefore(newnode,node) //newnode:要插入的新节点;node:指定此节点前插入节点
+我们来看看下面代码,在指定节点前插入节点
+注意:otest.insertBefore(newnode,node);也可以改为:otest.insertBefore(newnode,otest.childNodes[0])
+
+//删除节点removeChild()
+removeChild()方法从子节点列表中删除某个节点。如删除成功,此方法可返回被删除的节点,如失败,则返回NULL
+nodeObject.removeChild(node) //node:必需,指定需要删除的节点
+我们来看看下面代码,删除子点。
+注意:把删除的子节点赋值给x,这个子节点不在DOM树种,但是还存在内存中,可通过x操作。
+如果要完全删除对象,给x赋null值,代码如下:
+var otest=document.getElementById("div1");
+var x=otest.removeChild(otest.childNodes[1]);
+x=null;
+
+//替换元素节点replaceChild()
+replaceChild实现子节点(对象)的替换。返回被替换对象的引用。
+node.replaceChild(newnode,oldnew) //newnode:必需,用于替换oldnew的对象 oldnew:必需,被newnode替换的对象
+我们来看看下面的代码:
+效果:将文档中的Java改为JavaScript。
+注意:
+1.当oldnode被替换时,所有与之相关的属性内容都将被移除
+2.newnode必须先被建立
+
+//创建元素节点createElement
+createElement()方法可创建元素节点。此方法可返回一个Element对象。
+document.createElement(tagName) //字符串值,这个字符串用来指明创建元素的类型
+注意:
+要与appendChild()或insertBefore()方法联合使用,将元素显示在页面中。
+我们来创建一个按钮,代码如下:
+效果:在HTML文档中,创建一个按钮。
+我们也可以使用setAttribute来设置属性,代码如下:
+效果:在HTML文档中,创建一个文本框,使用setAttribute设置属性值。当点击这个文本框时,会弹出对话框"This is a text!";
+
+//创建文本节点createTextNode
+createTextNode()方法创建新的文本节点,返回新创建的Text节点。
+document.createTextNode(data) //字符串值,可规定此节点的文本
+我们来创建一个div元素并向其中添加一条消息,代码如下:
+
+//浏览器窗口可视区域大小
+获得浏览器窗口的尺寸(浏览器的视口,不包括工具栏和滚动条)的方法:
+一、对于IE9+、Chrome、Firefox、opera以及Safari:
+.window.innerHeight - 浏览器窗口的内部高度
+.window.innerWidth  - 浏览器窗口的内部宽度
+二、对于Internet Explorer8、7/6/5:
+.document.documentElement.clientHeight表示HTML文档所在窗口的当前高度
+.document.documentElement.clientWidth表示HTML文档所在窗口的当前宽度
+或者
+Document对象的body属性对应HTML稳当的body标签
+.document.body.clientHeight
+.docuemnt.body.clientWidth
+在不同浏览器都实用的JavaScript方案:
+var w=document.documentElement.clientWidth||document.body.clientWidth;
+var h=document.documentElement.clientHeight||document.body.height;
+
+//网页尺寸scrollHeight
+scrollHeight和scrollWidth,获取网页内容高度和宽度。
+一、针对IE、Opera:
+   scrollHeight是网页内容实际高度,可以小于clientHeight
+二、针对NS、FF:
+   scrollHeight是网页内容高度,不过最小值是clientHeight。也就是说网页内容实际高度小于clientHeight时,scrollHeight返回clientHeight
+三、浏览器兼容性
+   var w=document.documentElement.scrollWidth||document.body.scrollWidth;
+   var h=document.docmentElement.scrollHeight||document.body.scrollHeight;
+注意:区分大小写
+scrollHeight和scrollWidth还可以获取Dom元素中内容实际占用的高度和宽度
+
+//网页尺寸offsetHeight
+offsetHeight和offsetWidth,获取网页内容高度和宽度(包括滚动条等边线,会随窗口的显示大小改变)
+一、值
+   offsetHeight=clientHeight+滚动条+边框
+二、浏览器兼容性
+   var w=document.documentElement.offsetwidth||document.body.offsetWidth;
+   var h=document.documentElement.offsetHeight||document.body.offsetHeight;
+
+//网页卷去的距离和偏移量
+我们先来看看下面的图:
+scrollLeft:设置或获取位于给定对象左边界与窗口中目前可见内容的最左端之间的距离
+scrollTop:设置或获取位于给定对象最顶端与窗口中可见内容的最顶端之间的距离
+offsetLeft:获取指定对象相对于版面或由offsetParent属性指定的福坐标的计算左侧位置
+offsetTop:获取指定对象相对于版面或由offsetParent属性指定的福坐标的计算顶端位置
+注意:
+1.区分大小写
+2.offsetParent:布局中设置position属性(Relative、Absolute、fixed)的父容器,从最近的父节点开始,一层一层向上,直到HTML的body
+
+//编程练习
+制作一个表格,显示班级的学生信息
+要求:
+1.鼠标移动到不同行上时背景色改为色值为#f2f2f2,移开鼠标时则恢复为原背景色#fff
+2.点击添加按钮,能动态在最后添加一行
+3.点击删除按钮,则删除当前行
 	</pre>
+
+	<!-- practise -->
 	<a name="alink" href="#">我是链接一</a>
 	<br />
 	<a name="alink" href="#">我是链接二</a>
@@ -922,7 +1095,7 @@ elementNode.childNodes
 		document.write(list.length + "<br/>");//获取list的长度
 		document.write(li.innerHTML + "<br/>");//弹出li节点对象的内容
 	</script>
-	<h1 id="h1" title="getAttribute()获取标签的属值" onclick="hattr()">点击我,获取标签属值</h1>
+	<h3 id="h1" title="getAttribute()获取标签的属值" onclick="hattr()">点击我,获取标签属值</h3>
 	<ul>
 		<li>javascript</li>
 		<li>jQuery</li>
@@ -933,26 +1106,207 @@ elementNode.childNodes
 		document.write("UL子节点个数:" + list.length + "<br>");
 		document.write("节点类型:" + list[0].nodeType + "<br>");
 	</script>
+	<p id="p">parentNode获取指定节点的父节点</p>
+	<script type="text/javascript">
+		var mynode = document.getElementById("p");
+		document.write(mynode.parentNode.nodeName + "<br>");
+		document.write(mynode.parentNode.parentNode.nodeName);
+	</script>
+	<ul id="u1">
+		<li>javascript</li>
+		<li>jquery</li>
+		<li>html</li>
+	</ul>
+	<ul id="u2">
+		<li>css3</li>
+		<li>php</li>
+		<li>java</li>
+	</ul>
+	<script type="text/javascript">
+		function get_nextSibling(n) {
+			var x = n.nextSibling;
+			while (x && x.nodeType != 1) {
+				x = x.nextSilbing;
+			}
+			return x;
+		}
+
+		var x = document.getElementsByTagName("li")[0];
+		document.write(x.nodeName + "=" + x.innerHTML);
+
+		var y = get_nextSibling(x);
+		if (y != null) {
+			document.write("<br>nextsibling:<br>");
+			document.write(y.nodeName + "=" + y.innerHTML);
+		} else {
+			document.write("<br>已经是最后一个节点");
+		}
+	</script>
+	<div id="test">
+		<p id="p1">HTML</p>
+		<p id="p2">JavaScript</p>
+	</div>
+	<script type="text/javascript">
+		var otest = document.getElementById("test");
+		var newnode = document.createElement("p");
+		newnode.innerHTML = "This is a new p";
+		//appendChild方法添加节点
+		otest.appendChild(newnode);
+
+		var newChild = document.createElement("p");
+		newChild.innerHTML = "latest";
+		otest.insertBefore(newChild, otest.childNodes[0]);
+	</script>
+	<div id="div1">
+		<h1>HTML</h1>
+		<h2>javascript</h2>
+	</div>
+	<script type="text/javascript">
+		var otest = document.getElementById("div1");
+		var x = otest.removeChild(otest.childNodes[1]);
+		document.write("删除节点的内容:" + x.innerHTML);
+	</script>
+	<script type="text/javascript">
+		function replaceMessage() {
+			var newnode = document.createElement("p");
+			var newnodeText = document.createTextNode("JavaScript");
+			newnode.appendChild(newnodeText);
+			var oldNode = document.getElementById("oldnode");
+			oldNode.parentNode.replaceChild(newnode, oldNode);
+		}
+	</script>
+	<h1 id="oldnode">Java</h1>
+	<a href="javascript:replaceMessage()">"Java" 替换 "JavaScript"</a>
+	<br />
+	<script type="text/javascript">
+		var body = document.body;
+		var input = document.createElement("input");
+		input.type = "button";
+		input.value = "创建一个按钮";
+		body.appendChild(input);
+
+		var btn = document.createElement("input");
+		btn.setAttribute("type", "text");
+		btn.setAttribute("name", "q");
+		btn.setAttribute("value", "使用setAttribute");
+		btn.setAttribute("onclick", "javascript:alert('This is a text!');");
+		body.appendChild(btn);
+	</script>
+	<script type="text/javascript">
+		var div = document.createElement("div");
+		div.className = "message";
+		var textNode = document.createTextNode("Hello world!");
+		div.appendChild(textNode);
+		document.body.appendChild(div);
+	</script>
+	<script type="text/javascript">
+		window.onload = function() {
+			Highlight();
+		}
+
+		//创建删除函数
+		function delRow(obj) {
+			var tbody = document.getElementById('table').lastChild;
+			var tr = obj.parentNode.parentNode;
+			tbody.removeChild(tr);
+		}
+
+		//添加
+		function addRow(obj) {
+			var tbody = document.getElementById("table").lastChild;
+			var tr = document.createElement("tr");
+
+			var td = document.createElement("td");
+			td.innerHTML = "<input type='text'/>";
+			tr.appendChild(td);
+
+			td = document.createElement("td");
+			td.innerHTML = "<input type='text'/>";
+			tr.appendChild(td);
+
+			td = document.createElement("td");
+			td.innerHTML = "<a href='javascript:;'  onclick='delRow(this)'>删除</a>";
+			tr.appendChild(td);
+
+			tbody.appendChild(tr);
+			Hightlight();
+		}
+
+		//鼠标移动改变背景
+		function Highlight() {
+			var tbody = document.getElementById('table').lastChild;
+			trs = tbody.getElementsByTagName('tr');
+			for ( var i = 1; i < trs.length; i++) {
+				trs[i].onmouseover = function() {
+					this.style.backgroundColor = "#f2f2f2";
+				}
+				trs[i].onmouseout = function() {
+					this.style.backgroundColor = "#fff";
+				}
+			}
+		}
+	</script>
+	<table border="1px" width="50%" id="table">
+		<tr>
+			<th>学号</th>
+			<th>姓名</th>
+			<th>操作</th>
+		</tr>
+		<tr>
+			<td>xh001</td>
+			<td>王小明</td>
+			<td><a href="javascript:;" onclick="delRow(this)">删除</a></td>
+		</tr>
+
+		<tr>
+			<td>xh002</td>
+			<td>刘小芳</td>
+			<td><a href="javascript:;" onclick="delRow(this)">删除</a></td>
+		</tr>
+	</table>
+	<input type="button" value="添加一行" onclick="addRow()" />
+
+	<!-- 编程挑战 -->
+	<h4>第10章 编程挑战</h4>
+	<script type="text/javascript">
+		window.onload = function() {
+			var oTab = document.getElementById("tabs");
+			var oUl = oTab.getElementsByTagName("ul")[0];
+			var oLis = oUl.getElementsByTagName("li");
+			var oDivs = oTab.getElementsByTagName("div");
+
+			for ( var i = 0, len = oLis.length; i < len; i++) {
+				oLis[i].index = i;
+				oLis[i].onclick = function() {
+					for ( var n = 0; n < len; n++) {
+						oLis[n].className = "";
+						oDivs[n].className = "hide";
+					}
+					this.className = "on";
+					oDivs[this.index].className = "";
+				}
+			}
+			;
+		}
+	</script>
+	<div id="tabs">
+		<ul>
+			<li class="on">房产</li>
+			<li>家居</li>
+			<li>二手房</li>
+		</ul>
+		<div>
+			275万购昌平邻铁三居 总价20万买一居<br /> 200万内购五环三居 140万安家东三环><br /> 北京首现零首付楼盘
+			53万购东5环50平<br /> 京楼盘直降5000 中信府 公园楼王现房<br />
+		</div>
+		<div class="hide">
+			40平出租屋大改造 美少女的混搭小窝<br /> 经典清新简欧爱家 90平老房焕发新生<br /> 新中式的酷色温情
+			66平撞色活泼家居<br /> 瓷砖就像选好老婆 卫生间烟道的设计<br />
+		</div>
+		<div class="hide">
+			通州豪华3居260万 二环稀缺2居250w甩<br /> 西3环通透2居290万 130万2居限量抢购<br />
+			黄城根小学学区仅260万 121平70万抛!<br /> 独家别墅280万 苏州桥2居优惠价248万<br />
+		</div>
+	</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

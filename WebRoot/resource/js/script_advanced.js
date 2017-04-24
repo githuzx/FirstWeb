@@ -41,46 +41,15 @@ function validB() {
 /**
  * DOM
  */
-function getElements(){
-	var mynode=document.getElementsByName("alink");
+function getElements() {
+	var mynode = document.getElementsByName("alink");
 	alert(mynode.length);
 }
 
-function hattr(){
-	var hnode=document.getElementById("h1");
-	var attr1=hnode.getAttribute("id");
-	var attr2=hnode.getAttribute("title");
-	document.write("h1标签的ID:"+attr1+"<br>");
-	document.write("h1标签的title:"+attr2);
+function hattr() {
+	var hnode = document.getElementById("h1");
+	var attr1 = hnode.getAttribute("id");
+	var attr2 = hnode.getAttribute("title");
+	document.write("h1标签的ID:" + attr1 + "<br>");
+	document.write("h1标签的title:" + attr2);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
