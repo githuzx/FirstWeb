@@ -38,10 +38,10 @@ a {
 		<!-- HTML -->
 		<li>HTML/CSS:
 			<ol>
-				<li><a href="page/html.jsp" target="_blank"
+				<li><a href="page/htmlcss_html.jsp" target="_blank"
 					title="HTML+CSS基础课程">html.jsp</a>
 				</li>
-				<li><a href="page/style.jsp" target="_blank"
+				<li><a href="page/htmlcss_style.jsp" target="_blank"
 					title="HTML+CSS基础课程">style.jsp</a>
 				</li>
 			</ol>
@@ -51,19 +51,19 @@ a {
 		<!-- JavaScript -->
 		<li>JavaScript:
 			<ol>
-				<li><a href="page/script.jsp" target="_blank"
-					title="JavaScript入门篇">script.jsp</a>
+				<li><a href="page/javascript_basic.jsp" target="_blank"
+					title="JavaScript入门篇">basic.jsp</a>
 				</li>
-				<li><a href="page/script_advanced.jsp" target="_blank"
+				<li><a href="page/javascript_advanced.jsp" target="_blank"
 					title="JavaScript进阶篇">advanced.jsp</a></li>
 			</ol>
 		</li>
 
 
 		<!-- MySQL -->
-		<li>MySQL:
+		<li>DB:
 			<ol>
-				<li><a href="page/mysql.jsp" target="_blank"
+				<li><a href="page/db_mysql.jsp" target="_blank"
 					title="与MySQL的零距离接触">mysql.jsp</a>
 				</li>
 			</ol>
