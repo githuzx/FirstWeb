@@ -110,14 +110,14 @@
 				<li>香蕉</li>
 				<li>苹果</li>
 				<li>梨</li>
-			</ul>
-		</li>
+			</ul></li>
 		<li>蔬菜
 			<ul>
 				<li>白菜</li>
 				<li>油菜</li>
 				<li>卷心菜</li>
-			</ul></li>
+			</ul>
+		</li>
 	</ul>
 	<hr />
 
@@ -130,14 +130,14 @@
 				<li>香蕉</li>
 				<li>苹果</li>
 				<li>梨</li>
-			</ul></li>
+			</ul>
+		</li>
 		<li>蔬菜
 			<ul>
 				<li>白菜</li>
 				<li>油菜</li>
 				<li>卷心菜</li>
-			</ul>
-		</li>
+			</ul></li>
 	</ul>
 	<hr />
 
@@ -443,37 +443,29 @@
 				<td>
 					<ul>
 						<li style="float:left;display: inline;margin-right: 8px;"><a
-							href="#">1</a>
-						</li>
+							href="#">1</a></li>
 						<li style="float:left;display: inline;margin-right: 8px;"><a
-							href="#">2</a>
-						</li>
+							href="#">2</a></li>
 						<li style="float:left;display: inline;margin-right: 8px;"><a
-							href="#">3</a>
-						</li>
-					</ul></td>
+							href="#">3</a></li>
+					</ul>
+				</td>
 			</tr>
 		</tbody>
 	</table>
 	<div style="background: #ccc;margin:0 auto;">设置我所在的div容器水平居中</div>
 	<div class="unfixed_block_display">
 		<ul>
-			<li><a href="#">1</a>
-			</li>
-			<li><a href="#">2</a>
-			</li>
-			<li><a href="#">3</a>
-			</li>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
 		</ul>
 	</div>
 	<div class="unfixed_block_position">
 		<ul>
-			<li><a href="#">1</a>
-			</li>
-			<li><a href="#">2</a>
-			</li>
-			<li><a href="#">3</a>
-			</li>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
 		</ul>
 	</div>
 	<div>
@@ -492,8 +484,7 @@
 						<p>看我是否可以居中。</p>
 						<p>看我是否可以居中。</p>
 						<p>看我是否可以居中。</p>
-					</div>
-				</td>
+					</div></td>
 			</tr>
 		</tbody>
 	</table>
@@ -504,8 +495,7 @@
 					<div>
 						<img src="http://img.mukewang.com/52b4113500018cf102000200.jpg"
 							title="害羞的小女生">
-					</div>
-				</td>
+					</div></td>
 			</tr>
 		</tbody>
 	</table>
