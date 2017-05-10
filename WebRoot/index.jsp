@@ -45,7 +45,9 @@ a {
 				<li><a href="page/htmlcss_layoutbasic.jsp" target="_blank"
 					title="网页布局基础">layoutbasic.jsp</a> <!-- practice --> <a
 					href="page/layoutbasic/jimmysBooks.jsp" target="_blank"
-					title="幾米的书">①jimmysBooks.jsp</a></li>
+					title="幾米的书">①jimmysBooks.jsp</a> <a
+					href="page/layoutbasic/tencentSoftware.jsp" target="_blank"
+					title="腾讯软件中心">②tencentSoftware.jsp</a></li>
 			</ol></li>
 
 
