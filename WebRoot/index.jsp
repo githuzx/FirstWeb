@@ -47,7 +47,9 @@ a {
 					href="page/layoutbasic/jimmysBooks.jsp" target="_blank"
 					title="幾米的书">①jimmysBooks.jsp</a> <a
 					href="page/layoutbasic/tencentSoftware.jsp" target="_blank"
-					title="腾讯软件中心">②tencentSoftware.jsp</a></li>
+					title="腾讯软件中心">②tencentSoftware.jsp</a> <a
+					href="page/layoutbasic/webDevCourse.jsp" target="_blank"
+					title="前端开发教程">③webDevCourse.jsp</a></li>
 			</ol></li>
 
 
