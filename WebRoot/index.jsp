@@ -49,9 +49,10 @@ a {
 					href="page/layoutbasic/tencentSoftware.jsp" target="_blank"
 					title="腾讯软件中心">②tencentSoftware.jsp</a> <a
 					href="page/layoutbasic/webDevCourse.jsp" target="_blank"
-					title="前端开发教程">③webDevCourse.jsp</a></li>
+					title="前端开发教程">③webDevCourse.jsp</a> <a
+					href="page/layoutbasic/iCIBA.jsp" target="_blank" title="爱词霸">④iCIBA.jsp</a>
+				</li>
 			</ol></li>
-
 
 		<!-- JavaScript -->
 		<li>JavaScript:
