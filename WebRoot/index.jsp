@@ -39,11 +39,9 @@ a {
 		<li>HTML/CSS:
 			<ol>
 				<li><a href="page/htmlcss_html.jsp" target="_blank"
-					title="HTML+CSS基础课程">html.jsp</a>
-				</li>
+					title="HTML+CSS基础课程">html.jsp</a></li>
 				<li><a href="page/htmlcss_style.jsp" target="_blank"
-					title="HTML+CSS基础课程">style.jsp</a>
-				</li>
+					title="HTML+CSS基础课程">style.jsp</a></li>
 				<li><a href="page/htmlcss_layoutbasic.jsp" target="_blank"
 					title="网页布局基础">layoutbasic.jsp</a> <!-- practice --> <a
 					href="page/layoutbasic/jimmysBooks.jsp" target="_blank"
@@ -54,37 +52,36 @@ a {
 					title="前端开发教程">③webDevCourse.jsp</a> <a
 					href="page/layoutbasic/iCIBA.jsp" target="_blank" title="爱词霸">④iCIBA.jsp</a>
 				</li>
-			</ol>
-		</li>
+			</ol></li>
 
 		<!-- JavaScript -->
 		<li>JavaScript:
 			<ol>
 				<li><a href="page/javascript_basic.jsp" target="_blank"
-					title="JavaScript入门篇">basic.jsp</a>
-				</li>
+					title="JavaScript入门篇">basic.jsp</a></li>
 				<li><a href="page/javascript_advanced.jsp" target="_blank"
-					title="JavaScript进阶篇">advanced.jsp</a></li>
-			</ol>
-		</li>
+					title="JavaScript进阶篇">advanced.jsp</a>
+				</li>
+			</ol></li>
 
 
 		<!-- MySQL -->
 		<li>DB:
 			<ol>
 				<li><a href="page/db_mysql.jsp" target="_blank"
-					title="与MySQL的零距离接触">mysql.jsp</a>
-				</li>
-			</ol>
-		</li>
+					title="与MySQL的零距离接触">mysql.jsp</a></li>
+			</ol></li>
 
 		<!-- WebTool -->
 		<li>WebTool:
 			<ol>
 				<li><a href="page/webtool_dw.jsp" target="_target"
-					title="前端开发工具技巧介绍——DW篇">dw.jsp</a>
+					title="前端开发工具技巧介绍——DW篇">dw.jsp</a></li>
+				<li><a href="page/webtool_ps.jsp" target="_blank"
+					title="前端工程师必备的PS技巧——切图篇">ps.jsp</a>
 				</li>
-			</ol></li>
+			</ol>
+		</li>
 	</ul>
 </body>
 </html>
