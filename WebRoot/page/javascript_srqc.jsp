@@ -112,9 +112,9 @@ duck type
 
 //编程练习
     </pre>
-    
-    <h4>第2章 表达式和运算符</h4>
-    <pre>
+
+	<h4>第2章 表达式和运算符</h4>
+	<pre>
 //[JavaScript]表达式
 表达式是指能计算出值得任何可用程序单元。——Wiki
 表达式是一种JS短语,可使JS解释器用来产生一个值。——《JS权威指南》
@@ -182,9 +182,9 @@ obj.func();//obj
 void 0 //undefined
 void(0) //undefined
     </pre>
-    
-    <h4>第3章 语句</h4>
-    <pre>
+
+	<h4>第3章 语句</h4>
+	<pre>
 //[JavaScript]block语句、var语句    
 语句Statement
 JavaScript程序由语句组成,语句遵守特定的语法规则。例如:if语句,while语句,with语句等等
@@ -297,9 +297,9 @@ eval独立作用域
 试图修改不可写属性(writable=false),在不可扩展对象添加属性时报TypeError,而不是忽略
 arguments.caller,arguments.callee被禁用
     </pre>
-    
-    <h4>第4章 对象</h4>
-    <pre>
+
+	<h4>第4章 对象</h4>
+	<pre>
 //[JavaScript]对象描述    
 对象中包含一系列属性,这些属性是无序的。每个属性都有一个字符串key和对应的value。    
 var obj={x:1,y:2};
@@ -626,9 +626,9 @@ obj.valueOf=function(){
 
 "Result"+obj;//still "Result 103"
     </pre>
-    
-    <h4>第5章 数组</h4>
-    <pre>
+
+	<h4>第5章 数组</h4>
+	<pre>
 //[JavaScript]创建数组、数组操作
 数组是值的有序集合。每个值叫做元素,每个元素在数组中都有数字位置编号,也就是索引。JS中的数组是弱类型的,数组中可以含有不同类型的元素。数组元素甚至可以是对象或其它数组。
 var arr=[1,true,null,undefined,{x:1},[1,2,3]];
@@ -873,9 +873,9 @@ str[1];//e
 Array.prototype.join.call(str,"_")
 //"h_e_l_l_o__w_o_r_l_d"
     </pre>
-    
-    <h4>第6章 函数和作用域(函数、this)</h4>
-    <pre>
+
+	<h4>第6章 函数和作用域(函数、this)</h4>
+	<pre>
 //[JavaScript]函数概述
 函数是一块JavaScript代码,被定义一次,可执行和调用多次。JS中的函数也是对象,所以JS函数可以像其它对象那样操作和传递所以我们也常叫JS中的函数为函数对象
 重点:
@@ -887,6 +887,408 @@ new Foo() //构造器
 func.call(o) //call/apply/bind
 
 //[JavaScript]函数声明与表达式
+函数声明
+function add(a,b){
+    a=+a;
+    b=+b;
+    if(isNaN(a)||isNaN(b)){
+        return;
+    }
+    return a+b;
+}
+
+函数表达式
+①function variable
+var add=function(a,b){
+    //do sth
+};
+
+②IEF(Immediately Executed Function)
+(function(){
+    //do sth
+})();
+
+③first-class function
+return function(){
+    //do sth
+};
+
+④NFE(Named Function Expression)命名函数表达式
+var add=function foo(a,b){
+    //sth
+};
+
+区别:
+变量&函数的声明前置
+
+①function add(a,b)
+var num=add(1,2)
+console.log(num) //result:3
+function add(a,b){...}
+
+②var add | TypeError:undefined is not a function
+var num=add(1,2)
+console.log(num)
+var add=function(a,b){...}
+
+Function构造器
+var func=new Function('a','b','console.log(a+b);')
+func(1,2) //3
+
+var func=Function('a','b','console.log(a+b);')
+func(1,2) //3
+
+①CASE1
+Function('var localVal="local";console.log(localVal);')()
+console.log(typeof localVal) //result:local,undefined
+
+②CASE2
+var globalVal='global'
+(function(){
+    val localVal='local'
+    Function('console.log(typeof localVal,typeof globalVal);') //result:undefined,string
+})()
+
+//[JavaScript]this
+①全局的this(浏览器)
+console.log(this===window) //true
+
+②一般函数的this(浏览器)
+function f1(){
+    return this;
+}
+f1()===window; //true,global object
+
+function f2(){
+    "use strict" //see strict mode
+    return this
+}
+f2()===undefined //true
+
+③作为对象方法的函数的this
+var o={
+    prop:37,
+    f:function(){
+        return this.prop;
+    }
+}
+console.log(o.f()) //logs 37
+
+var o={prop:37}
+function independent(){
+    return this.prop;
+}
+o.f=independent;
+console.log(o.f()) //logs 37
+
+④对象原型链上的this
+var o={f:function(){return this.a+this.b;}}
+var p=Object.create(o)
+p.a=1
+p.b=4
+console.log(p.f()) //5
+
+⑤get/set方法与this
+⑥构造器中的this
+⑦call/apply方法与this
+function add(c,d){
+    return this.a+this.b+c+d;
+}
+var o={a:1,b:3}
+add.call(o,5,7) //1+3+5+7=16
+add.apply(o,[10,20]) //1+3+10+20=34
+function bar(){
+    console.log(Object.prototype.toString.call(this))
+}
+bar.call(7) //"[object Number]"
+
+⑧bind方法与this -> IE9+
+function f(){
+    return this.a
+}
+var g=f.bind({a:"test"})
+console.log(g()) //test
+var o={a:37,f:f,g:g}
+console.log(o.f(),o.g()) //37,test
+
+//[JavaScript]函数属性arguments
+①函数属性&arguments
+function foo(x,y,z){
+    arguments.length //2 -> 实参个数
+    arguments[0] //1
+    arguments[0]=10
+    x //change to 10
+    arguments[2]=100
+    z //still undefined!!!
+}
+foo(1,2)
+foo.length //3 -> 形参个数
+foo.name //"foo" -> 函数名
+
+②apply/call方法(浏览器)
+function foo(x,y){
+    console.log(x,y,this)
+}
+foo.call(100,1,2) //1,2,Number(100)
+foo.apply(true,[3,4]) //3,4,Boolean(true)
+foo.apply(null) //undefined,window
+foo.apply(undefined) //undefined,window
+
+③bind方法
+this.x=9
+var module={
+    x:81
+    getX:function(){return this.x}
+}
+module.getX() //81
+var getX=module.getX
+getX() //9
+var boundGetX=getX.bind(module)
+boundGetX() //81
+
+④bind与currying
+⑤bind与new
+⑥bind方法模拟
+    </pre>
+
+	<h4>第7章 函数和作用域(闭包、作用域)</h4>
+	<pre>
+//[JavaScript]理解闭包    
+①闭包的例子
+function outer(){
+    var localVal=30;
+    return localVal;
+}
+outer(); //30
+
+function outer(){
+    var localVal=30;
+    return function(){
+        return localVal;
+    }
+}
+var func=outer();
+func(); //30
+
+②闭包-无处不在
+!function(){
+    var localData="localData here";
+    document.addEventListener('click',
+        function(){
+            console.log(localData);
+    });
+}();
+
+!function(){
+    var localData="localData here";
+    var url="http://www.baidu.com/";
+    $.ajax({
+        url:url,
+        success:function(){
+            //do sth
+            console.log(localData);
+        }
+    });
+}();
+
+③闭包-常见错误之循环闭包
+document.body.innerHTML="div id=div1>aaa&nbsp;div id=div2>bbb&nbsp;div id=div3>ccc";
+for(var i=1;i<4;i++){
+    document.getElementById('div'+i).
+    addEventListener('click',function(){
+        alert(i);//all are 4!
+    });
+}
+
+document.body.innerHTML="div id=div1>aaa&nbsp;div id=div2>bbb&nbsp;div id=div3>ccc</div>";
+for(var i=1;i<4;i++){
+     !function(i){
+         document.getElementById('div'+i).
+         addEventListener('click',function(){
+              alert(i);//1,2,3
+         });
+     }(i);
+}
+
+④闭包-封装
+(function(){
+    var _userId=23492;
+    var _typeId='item';
+    var export={};
+
+    function converter(userId){
+        return +userId;
+    }
+    
+    export.getUserId=function(){
+        return converter(_userId);
+    }
+    
+    export.getTypeId=function(){
+        return _typeId;
+    }
+    
+    window.export=export;
+}());
+
+export.getUserId();//23492
+export.getTypeId();//item
+
+export._userId;//undefined
+export._typeId;//undefined
+export.converter;//undefined
+
+⑤闭包的概念
+ - 在计算机科学中,闭包(也称词法闭包或函数闭包)是指一个函数或函数的引用,与一个引用环境绑定在一起。
+   这个引用环境是一个存储该函数每个局部变量(也叫自由变量)的表。 
+ - 闭包,不同于一般的函数,它允许一个函数在立即词法作用域外调用时,仍可访问非本地变量。
+                                                         
+                                                         
+                                         —— from维基百科
+                                         
+⑥闭包-小结
+灵活和方便
+空间浪费、内存泄漏、性能消耗             
+
+//[JavaScript]作用域
+①全局、函数、eval
+var a=10;
+(fucntion(){
+    var b=20;
+})();
+console.log(a); //10
+console.log(b); //error,b in not defined
+
+for(var item in{a:1,b:2}){
+    console.log(item);
+}
+console.log(item); //item still in scope
+ 
+eval("var a=1;");
+
+②作用域链
+function outer2(){
+    var local2=1;
+    function outer1(){
+        var local1=1;
+        //visit local1,local2 or global3
+    }
+    outer1();
+}
+var global3=1;
+outer2();
+
+function outer(){
+    var i=1;
+    var func=new Function("console.log(typeof i);");
+    func();
+}
+outer();
+
+③利用函数作用域封装
+(fucntion(){
+    //do sth here
+    var a,b;
+})();
+
+!function(){
+    //do sth here
+    var a,b;
+}();
+
+//[JavaScript]ES3执行上下文
+①概念-执行上下文
+执行上下文(Execution Context,缩写EC)
+
+②概念-变量对象
+JS解释器如何找到我们定义的函数和变量?
+变量对象(Variable Object,缩写为VO)是一个抽象概念中的"对象",它用于存储执行上下文中的:1.变量 2.函数声明 3.函数参数
+
+VO填充顺序:
+1.函数参数(若未传入,初始化该参数值为undefined)
+2.函数申明(若发生命名冲突,会覆盖)
+3.变量声明(初始化变量值为undefined,若发生命名冲突,会忽略。)
+
+//小结
+理解函数
+函数声明与表达式
+this与调用方式
+函数属性与arguments
+理解闭包和作用域
+解析ES3执行上下文
+    </pre>
+
+	<h4>第9章 OOP(上)</h4>
+	<pre>
+//概念与继承
+①概念
+面向对象程序设计(Object-oriented programming,OOP)是一种程序设计泛型,同时也是一种程序开发的方法。
+对象指的是类的实例。它将对象作为程序的基本单元,将程序和数据封装其中,以提高软件的重用性、灵活性和扩展性
+                                              ——维基百科
+继承 封装 多态 抽象
+prototype:是函数对象上预设的对象属性
+原型:是对象上的一个原型(通常都是它的构造器的prototype属性)
+
+//再谈原型链
+Object.create() —— 创建一个空对象,并且这个对象的原型指向参数
+
+//prototype属性
+
+//instanceof
+[1,2] instanceof Array === true
+   对象                             函数/构造器
+ ↑.原型链上                 ↑.prototype是否出现在←
+ 
+//实现继承的方式
+Student.prototype=Object.create(Person.prototype)
+    </pre>
+
+	<h4>第9章 OOP(下)</h4>
+	<pre>
+//OOP(模拟重载、链式调用、模块化)
+模拟重载
+调用子类对象  Person.call(this,name)
+链式调用 
+抽象类
+模块化
+
+//实践(探测器)
+    </pre>
+
+	<h4>第10章 正则与模式匹配</h4>
+	<pre>
+//[JavaScript]正则表达式
+①什么是正则
+在常见的字符串检索或替换中,我们需要提供一种模式表示检索或替换的规则。
+正则表达式使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。
+abc [a-z]{4} \d\d\d
+
+②一个简单的例子
+/\d\d\d/.test("123"); //true
+/\d\d\d/.test("abc"); //false
+RegExp("\d\d\d").test("123"); //true
+
+③特殊符转义
+/\^abc/.test('^abc');
+
+④三个FLAG
+global ignoreCase multiline
+
+/abc/gim.test("ABC"); //true
+RegExp("abc","mgi")
+
+⑤RegExp对象方法
+compile        var reg=/abc/; reg.compile("def"); reg.test("def"); //true
+exec -> match  /abc/.exec("abcdef"); //"abc"
+test           /abc/.test("abcde"); //true
+toString       /abc/.toString(); //"/abc/"
+
+⑥string类型与正则相关的方法
+○String.prototype.search    "abcabcdef".search(/(abc)\1/); //0
+○String.prototype.replace   "aabbbbcc".replace(/b+?/,"1"); //aa1bbbcc
+○String.prototype.match     "aabbbbcc".match(/b+/); //["bbbb"]
+                            "aabbbbccbbaa".match(/b+/g); //["bbbb","bb"]
+○String.prototype.split     "aabbbbccbbaa".split(/b+/); //["aa","cc","aa"]
     </pre>
 </body>
 </html>
