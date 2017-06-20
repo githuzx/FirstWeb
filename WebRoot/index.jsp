@@ -23,6 +23,7 @@ body {
 
 li {
 	margin: 10px;
+	font-size: 16px;
 }
 
 a {
@@ -35,7 +36,7 @@ a {
 
 <body>
 	<ul>
-		<!-- HTML -->
+		<!-- HTML/CSS -->
 		<li>HTML/CSS:
 			<ol>
 				<li><a href="page/htmlcss_html.jsp" target="_blank"
@@ -65,13 +66,13 @@ a {
 				</li>
 				<li><a href="page/javascript_advanced.jsp" target="_blank"
 					title="JavaScript进阶篇">advanced.jsp</a></li>
-				<li><a href="page/javascript_srqc.jsp" target="_blank"
-					title="JavaScript深入浅出">srqc.jsp</a></li>
+				<li><a href="page/javascript_profoundsimp.jsp" target="_blank"
+					title="JavaScript深入浅出">profoundsimp.jsp</a></li>
 			</ol>
 		</li>
 
 
-		<!-- MySQL -->
+		<!-- DB -->
 		<li>DB:
 			<ol>
 				<li><a href="page/db_mysql.jsp" target="_blank"
@@ -89,6 +90,18 @@ a {
 				<li><a href="page/webtool_ps.jsp" target="_blank"
 					title="前端工程师必备的PS技巧——切图篇">ps.jsp</a></li>
 			</ol></li>
+
+		<!-- CSS3 -->
+		<li>CSS3:
+			<ol>
+				<li><a href="page/css3_basic.jsp" target="_blank"
+					title="十天精通CSS3">css3basic.jsp</a> <!-- practice --> <a
+					href="page/css3basic/helloCSS3.jsp" target="_blank"
+					title="Hello CSS3">①helloCSS3.jsp</a> <a
+					href="page/css3basic/doraemon.jsp" target="_blank" title="哆啦A梦">②doraemon.jsp</a>
+				</li>
+			</ol>
+		</li>
 	</ul>
 </body>
 </html>

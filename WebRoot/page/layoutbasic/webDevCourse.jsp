@@ -19,7 +19,7 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 <link rel="stylesheet" type="text/css"
-	href="resource/css/webdevcourse_style.css">
+	href="resource/css/style_webdevcourse.css">
 </head>
 
 <body>
