@@ -43,6 +43,8 @@ a {
 					href="page/css3basic/test/textFont.jsp">textFont.jsp</a></li>
 				<li><a title="背景" target="_blank"
 					href="page/css3basic/test/background.jsp">background.jsp</a></li>
+				<li><a title="征服CSS3选择器" target="_blank"
+					href="page/css3basic/test/selector.jsp">selector.jsp</a></li>
 			</ol></li>
 	</ul>
 
@@ -220,9 +222,42 @@ background:[background-color]
 
 	<h4>第6章 征服CSS3选择器(上)</h4>
 	<pre>
-//
+//css3选择器 属性选择器
+E[att^="val"] -> 匹配属性值以val开头的任何字符串
+E[att$="val"] -> 匹配属性值以val结尾的任何字符串
+E[att*="val"] -> 匹配属性值任意位置包含val
 
+//css3结构性伪类选择器—root
+:root选择器,从字面上我们就可以很清楚的理解是根选择器,他的意思就是匹配元素E所在文档的根元素。在HTML文档中,根元素始终是html
+:root选择器等同于html元素,简单点说:root{background:orange;} = html{background:orange;}
 
+//css3结构性伪类选择器—not
+:not选择器称为否定选择器,和jQuery中的:not选择器一模一样,可以选择除某个元素之外的所有元素。
+就拿form元素来说,比如说你想给表单中除submit按钮之外的input元素添加红色边框
+
+//css3结构性伪类选择器—empty
+:empty选择器表示的就是空。用来选择没有任何内容的元素,这里没有内容指的是一点内容都没有,哪怕是一个空格
+
+//css3结构性伪类选择器—target
+:target选择器称为目标选择器,用来匹配文档(页面)的url的某个标志符的目标元素
+①具体来说,触发元素的URL中的标识符通常包含一个#号,后面带有一个标识符名称
+②:target就是用来匹配id为“brand”的元素
+
+//css3结构性伪类选择器—first-child
+:first-child选择器表示的是选择父元素的第一个子元素的元素E。简单点理解就是选择元素中的第一个子元素,记住是子元素,而不是后代元素。
+
+//css3结构性伪类选择器——last-child
+:last-child选择器选择的是元素的最后一个子元素
+
+//css3结构性伪类选择器——nth-child(n)
+:nth-child(n)选择器用来定位某个父元素的一个或多个特定的子元素。其中'n'是其参数,而且可以是整数值(1,2,3,4),
+也可以是表达式(2n+1、-n+5)和关键词(odd、even),但参数n的起始值始终是1,而不是0.也就是说,参数n的值为0时,选择器将选择不到任何匹配的元素。
+经验与技巧:当'nth-child(n)'选择器中为一个表达式时,其中n是从0开始计算,当表达式的值为0或小于0的时候,不选择任何匹配的元素。
+
+//css3结构性伪类选择器——nth-last-child(n)
+:nth-last-child(n)从某父元素的最后一个子元素开始计算,来选择特定的元素
+
+//css3 first-of-type选择器
 
 	</pre>
 </body>
