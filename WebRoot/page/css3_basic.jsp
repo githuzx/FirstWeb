@@ -27,6 +27,10 @@ a {
 	font-size: 18px;
 	padding: 10px;
 }
+
+ul {
+	list-style: none;
+}
 </style>
 </head>
 
@@ -43,10 +47,31 @@ a {
 					href="page/css3basic/test/textFont.jsp">textFont.jsp</a></li>
 				<li><a title="背景" target="_blank"
 					href="page/css3basic/test/background.jsp">background.jsp</a></li>
-				<li><a title="征服CSS3选择器" target="_blank"
-					href="page/css3basic/test/selector.jsp">selector.jsp</a></li>
-			</ol></li>
+				<li>&nbsp;selector
+					<ul>
+						<li>5.1 <a title="征服CSS3选择器(上)" target="_blank"
+							href="page/css3basic/test/selectorUp.jsp">selectorUp.jsp</a></li>
+						<li>5.2 <a title="征服CSS3选择器(下)" target="_blank"
+							href="page/css3basic/test/selectorDown.jsp">selectorDown.jsp</a>
+						</li>
+					</ul>
+				</li>
+				<li>&nbsp;animation
+					<ul>
+						<li>6.1 <a title="CSS3中的变形与动画(上)" target="_blank"
+							href="page/css3basic/test/animationUp.jsp">animationUp.jsp</a></li>
+						<li>6.2 <a title="CSS3中的变形与动画(下)" target="_blank"
+							href="page/css3basic/test/animationDown.jsp">animationDown.jsp</a>
+						</li>
+					</ul>
+				</li>
+				<li><a title="布局样式相关" target="_blank"
+					href="page/css3basic/test/layout.jsp">layout.jsp</a>
+				</li>
+			</ol>
+		</li>
 	</ul>
+
 
 	<h4>第1章 初识CSS3</h4>
 	<pre>
@@ -258,7 +283,188 @@ E[att*="val"] -> 匹配属性值任意位置包含val
 :nth-last-child(n)从某父元素的最后一个子元素开始计算,来选择特定的元素
 
 //css3 first-of-type选择器
+:first-of-type选择器类似于:first-child选择器,不同之处就是指定了元素的类型,其主要用来定位一个父元素下的某个类型的第一个子元素
 
+//css3 nth-of-type(n)选择器
+:nth-of-type(n)选择器和:nth-child(n)选择器非常类似,不同的是它只计算父元素中指定的某种类型的子元素。当某个元素中的子元素不单单是同一种类型的子元素时,使用:nth-of-type(n)选择器来定位父元素中某种类型的子元素非常方便和有用的
+
+//css3 last-of-type选择器
+:last-of-type选择器和:first-of-type选择器功能一样,不同的是它选择是父元素下的某个类型的最后一个子元素
+
+//css3 nth-last-of-type(n)选择器
+:nth-last-of-type(n)
+
+//css3 only-child选择器
+:only-child选择器选择的是父元素中只有一个子元素,而且只有唯一的一个子元素。也就是说,匹配的元素的父元素中仅有一个子元素,而且是一个唯一的子元素
+
+//css3 only-of-type
+:only-of-type选择器用来选择一个元素是它的父元素的唯一一个相同类型的子元素。表示一个元素它有很多个子元素,而其中只有一种类型的子元素是唯一的,使用:only-of-type选择器就可以选中这个元素的唯一一个类型子元素
 	</pre>
+
+	<h4>第7章 征服CSS3选择器(下)</h4>
+	<pre>
+//enabled选择器	
+在Web的表单中,有些表单元素有可用和不可用状态,比如输入框,密码框,复选框等。在默认情况之下,这些表单元素都处在可用状态。那么我们可以通过伪选择器:enabled对这些表单元素设置样式
+
+//disabled选择器
+通过:disabled选择器,给不可用输入框设置明显的样式
+
+//checked选择器
+:checked表示的是选中状态,通过:checked状态来自定义复选框效果
+
+//selection选择器
+:selection伪元素是用来匹配突出显示的文本(用鼠标选择文本时的文本)。浏览器默认情况下,用鼠标选择网页文本是以'深蓝的背景,白色的字体'显示的
+
+//read-only选择器
+:read-only伪类选择器用来指定处于只读状态元素的样式。简单点理解就是,元素中设置了'readonly=readonly'
+
+//read-write选择器
+:read-write选择器来设置不是只读控件的文本框样式
+
+//before和after
+::before和::after这两个主要用来给元素的前面或后面插入内容,这两个常和'content'配合使用,使用的场景最多的就是清除浮动
+
+//切换背景图像综合练习题
+根据所学知识,使用CSS3知识,实现背景图片的切换效果(不依赖js,点击小图切换大的背景图)
+	</pre>
+
+	<h4>第8章 CSS3中的变形与动画(上)</h4>
+	<pre>
+//旋转 rotate()
+旋转rotate()函数通过指定的角度参数使元素相对原点进行旋转。它主要在二维空间内进行操作,设置一个角度值,用来指定旋转的幅度。如果这个值为正值,元素相对原点顺时针旋转;如果这个值为负值,元素相对原点中心逆时针旋转。
+
+//扭曲 skew()
+扭曲skew()函数能够让元素倾斜显示。它可以将一个对象以其中心位置围绕着X轴和Y轴按照一定的角度倾斜。这与rotate()函数的旋转不同,rotate()函数只是旋转,而不会改变元素的状态。skew()函数不会旋转,而只会改变元素的状态。
+Skew()具有三种情况:
+①skew(x,y)使元素在水平和垂直方向同时扭曲(X轴和Y轴同时按一定的角度值进行扭曲变形);如果第二个参数未提供,则值为0,也就是Y轴方向上无斜切
+②skewX(x)仅使元素在水平方向扭曲变形(X轴扭曲变形)
+③skewY(y)仅使元素在垂直方向扭曲变形(Y轴扭曲变形)
+
+//缩放 scale()
+缩放scale()函数让元素根据中心原点对对象进行缩放
+缩放scale具有三种情况:	
+①scale(x,y)使元素水平方向和垂直方向同时缩放,注意:y是一个可选参数,如果没有设置y值,则表示x,y两个方向的缩放倍数是一样的
+②scaleX(x)元素仅水平方向缩放
+③scaleY(y)元素仅垂直方向缩放
+
+//位移 translate()
+translate()函数可以将元素向指定的方向移动,类似于position中的relative。或以简单的理解为,使用translate()函数,可以把元素从原来的位置移动,而不影响在X、Y轴上的任何Web组件
+translate我们分为三种情况:
+①translate(x,y)水平方向和垂直方向同时移动
+②translateX(x)仅水平方向移动
+③translateY(y)仅垂直方向移动
+
+//矩阵 matrix()
+matrix()是一个含六个值的(a,b,c,d,e,f)变换矩阵,用来指定一个2D变换,相当于直接应用一个[a b c d e f]变换矩阵。就是基于水平方向(X轴)和垂直方向(Y轴)重新定位元素,此属性值使用涉及到数学中的矩阵,我在这里只是简单的说一下CSS3中的transform有这么一个属性值,如果需要深入了解,需要对数学矩阵有一定的知识。
+
+//原点 transform-origin
+任何一个元素都有一个中心点,默认情况下,其中心点是居于元素X轴和Y轴的50%处。在没有重置transform-origin改变元素原点位置的情况下,CSS进行的旋转、位移、缩放、扭曲等操作都是以元素自己中心位置进行变形。但很多时候,我们可以通过transform-origin来对元素进行原点位置改变,使元素原点不在元素的中心位置,以达到需要的原点位置
+
+//过渡属性 transition-property
+早期在Web中要实现动画效果,都是依赖于JavaScript或Flash来完成。但在CSS3中新增了一个新的模块transition,它可以通过一些简单的CSS事件来触发元素的外观变化,让效果显得更加细腻。简单点说,就是通过鼠标的单击、获得焦点、被点击或对元素任何改变中触发,并平滑地以动画效果改变CSS的属性值
+在CSS中创建简单的过渡效果可以从以下几个步骤来实现:
+①在默认的样式中声明元素的初始状态样式
+②声明过渡元素最终状态样式,比如悬浮状态
+③在默认样式中通过添加过渡函数,添加一些不同的样式
+CSS3的过渡transition属性是一个复合属性,主要包括以下几个属性:
+•transition-property:指定过渡或动态模拟的CSS属性
+•transition-duration:指定完成过渡所需的时间
+•transition-timing-function:指定过渡函数
+•transition-delay:指定开始出现的延迟时间
+
+//过渡所需时间 transition-duration
+transition-duration属性主要用来设置一个属性过渡到另一个属性所需的时间,也就是从旧属性过渡到新属性花费的时间长度,俗称持续时间
+
+//过渡函数 transition-timing-function
+transition-timing-function属性指的是过渡的"缓动函数"。主要用来指定浏览器的过渡速度,以及过渡期间的操作进展情况
+
+//过渡延迟时间 transition-delay
+transition-delay属性和transition-duration极其类似,不同的是transition-duration是用来设置过渡动画的持续时间,而transition-delay主要用来指定一个动画开始执行的时间,也就是说当改变元素属性值后多长时间开始执行
+	</pre>
+
+	<h4>第9章 CSS3中的变形与动画(下)</h4>
+	<pre>
+//Keyframes介绍
+Keyframes被称为关键帧,其类似于Flash中的关键帧。在CSS3中其主要'@keyframes'开头,后面紧跟着是动画名称加上一对花括号,括号中就是一些不同时间段样式规则
+
+//CSS3中调用动画
+animation-name属性主要是用来调用@Keyframes定义好的动画
+animation-name:none | IDENT[,none|DENT]
+
+//CSS3中设置动画播放时间
+animation-duration主要用来设置CSS3动画播放时间,其使用方法和transition-duration类似,是用来指定元素播放动画所持续的时间长,单位s
+取值time为数值,单位为秒,其默认值为0,这意味着动画周期为0,也就是没有动画效果,如果值为负值会被视为0
+
+//CSS3中设置动画播放方式
+animation-timing-function属性主要用来设置动画播放方式。主要让元素根据时间的推进来改变属性值的变换速率,简单点说就是动画的播放方式
+在调用move动画播放中,让元素样式从初始状态到终止状态时,先加速再减速,也就是渐显渐隐效果
+
+//CSS3中设置动画开始播放的时间
+animation-delay属性用来定义动画开始播放的时间,用来触发动画播放的时间点。和transition-delay属性一样,用于定义在浏览器开始执行动画之前等待的时间
+
+//CSS3中设置动画播放次数
+animation-iteration-count属性主要用来定义动画的播放次数
+其值经常为整数,但也可以使用带有小数的数字,其默认值为1,这意味着动画将从开始到结束只播放一次;如果取值为infinite,动画将会无限次的播放
+
+//CSS3中设置动画播放方向
+animation-direction属性主要用来设置动画播放方向,其语法规则如下:
+animation-direction:normal | alternate
+①normal是默认值,如果设置为normal时,动画的每次循环都是向前播放
+②alternate,他的作用是,动画播放在第偶次向前播放,第奇次向反方向播放
+
+//CSS3中设置动画的播放状态
+animation-play-state属性主要用来控制元素动画的播放状态
+①running是其默认值,主要作用就是类似于音乐播放器一样,可以通过paused将正在播放的动画停下来
+②paused将暂停的动画重新播放,这里的重新播放不一定是从元素动画的开始播放,而是从暂停的那个位置开始播放
+
+//CSS3中设置动画时间外属性
+animation-fill-mode属性定义在动画开始之前和结束之后发生的操作。主要具有四个属性值:none、forwards、backwords和both
+①none默认值,表示动画将按预期进行和结束,在动画完成其最后一帧时,动画会反转到初始帧处
+②forwards表示动画在结束后继续应用最后的关键帧的位置
+③backwards会在向元素应用动画样式时迅速应用动画的初始帧
+④both元素动画同时具有forwards和backwards效果
+在默认情况下,动画不会影响它的关键帧之外的属性,使用animation-fill-mode属性可以修改动画的默认行为。简单的说就是告诉动画在第一帧上等待动画开始,或者在动画结束时停在最后一个关键帧上而不回到动画的第一帧上。或者同时具有这两个效果。
+例如:让动画停在第一帧处 animation-fill-mode:forwards
+
+//制作3D旋转导航综合练习题
+    </pre>
+
+	<h4>第10章 布局样式相关</h4>
+	<pre>
+//CSS3多列布局 — columns
+为了能在Web页面中方便类似报纸、杂志那种多列排版的布局,W3C特意给CSS3增加了一个多列布局模型(CSS Multi Column Layout Module)。
+它主要应用在文本的多列布局方面,这种布局在报纸和杂志上都实用了几十年了,但要在Web页面上实现这样的效果还是有相当大的难度,庆幸的是,CSS3的多列布局可以轻松实现
+columns:column-width || column-count
+columns:200px 2;
+到目前为止大部分主流浏览器都对其支持,不过还是需要添加各浏览器的私有前缀。如-moz,-webkit,-ms和-o等
+
+//CSS3多列布局 - column-width
+column-width的使用和CSS中的width属性一样,不过不同的是,column-width属性在定义元素列宽的时候,即可以单独使用,也可以和多列属性中其他属性配合使用.
+column-width:auto(如果column-width设置值为auto或者没有显式的设置值时,元素多列的列宽将由其他属性来决定,比如前面的示例就是由列数column-count来决定) | length(使用固定值来设置元素列的宽度,其主要是由数值和长度单位组成,不过其值只能是正值,不能为负值)
+
+//CSS3多列布局 - column-count
+column-count属性主要用来给元素指定想要的列数和允许的最大列数
+column-count:auto(此值为column-count的默认值,表示元素只有一列,其主要依靠浏览器计算自动设置) | integer(此值为正整数,主要用来定义元素的列数,取值为大于0的整数,负值无效)
+
+//CSS3列间距 - column-gap
+column-gap:normal(默认值,默认值为1em如果你的字号是px,其默认值为你的font-size值) || length(此值用来设置列与列之间的距离,其可以使用px,em单位的任何整数值,但不能是负值)
+column-count:3;column-gap:2em;
+
+//CSS3列表边框 - column-rule
+column-rule主要是用来定义列与列之间的边框宽度、边框样式和边框颜色。简单点说,就有点类似于常用的border属性。但column-rule是不占用任何空间位置的,在列与列之间改变其宽度不会改变任何列的位置
+语法规则:column-rule:
+①column-rule-width:类似于border-width属性,主要用来定义列边框的宽度,其默认值为'medium',column-rule-width属性接受任意浮点数,但不接收负值。但也像border-width属性一样,可以使用关键词:medium、thick和thin
+②column-rule-style:类似于border-style属性,主要用来定义列边框样式,其默认值为'none'。column-rule-style属性值与border-style属性相同,包括none、hidden、dotted、dashed、solid、double、groove、ridge、inset、outset
+③column-rule-color:类似于border-color属性,主要用来定义列边框颜色,其默认值为前景色color的值,使用时相当于border-color。column-rule-color接受所有的颜色。如果不希望显示颜色,也可以将其设置为transparent
+column-rule:2px dotted green;
+
+//CSS3跨列设置 - column-span
+column-span主要用来定义一个分列元素中的子元素能跨列多少。column-width、column-count等属性能让一元素分成多列,不管里面元素如何排放顺序,他们都是从左到右的放置内容,但有时我们需要其中一段内容或一个标题不进行分列,也就是横跨所有列,此时column-span就可以轻松实现
+column-span:none | all
+
+//CSS3 盒子模型
+CSS中有一种基础设计模式叫盒模型,
+
+    </pre>
 </body>
 </html>

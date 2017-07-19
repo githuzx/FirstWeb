@@ -10,7 +10,7 @@
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>征服CSS3选择器</title>
+<title>征服CSS3选择器(上)</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -172,8 +172,61 @@ ul>li:first-child {
 .po_nth_last li:nth-last-child(5) {
 	background: orange;
 }
-</style>
 
+/*first-of-type选择器*/
+.wrapper_firstoftype,.wrapper_nthoftype,.wrapper_lastoftype,.wrapper_nthlastoftype,.wrapper_onlyoftype
+	{
+	width: 500px;
+	margin: 20px;
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+.wrapper_firstoftype>div {
+	background: green;
+	color: #fff;
+}
+
+.wrapper_firstoftype>p {
+	background: blue;
+	color: #fff;
+}
+
+.wrapper_firstoftype>p:first-of-type {
+	background: orange;
+}
+
+/*nth-of-type(n)选择器*/
+.wrapper_nthoftype>p:nth-of-type(2n) {
+	background: orange;
+}
+
+/*last-of-type选择器*/
+.wrapper_lastoftype>p:last-of-type {
+	background: orange;
+}
+
+/*nth-last-of-type(n)选择器*/
+.wrapper_nthlastoftype>p:nth-last-of-type(3) {
+	background: orange;
+}
+
+/*only-child选择器*/
+.post p {
+	background: green;
+	color: #fff;
+	padding: 10px;
+}
+
+.post p:only-child {
+	background: orange;
+}
+
+/*only-of-type选择器*/
+.wrapper_onlyoftype>div:only-of-type {
+	background: orange;
+}
+</style>
 </head>
 
 <body>
@@ -286,7 +339,7 @@ ul>li:first-child {
 		</li>
 
 		<!-- 结构性伪类选择器——nth-last-child(n) -->
-		<li><a href="#">结构性为类选择器—nth-last-child(n)</a><br>
+		<li><a href="#">结构性伪类选择器—nth-last-child(n)</a><br>
 			<ol class="po_nth_last">
 				<li>item 1</li>
 				<li>item 2</li>
@@ -304,6 +357,81 @@ ul>li:first-child {
 				<li>item 14</li>
 				<li>item 15</li>
 			</ol>
+		</li>
+
+		<!-- first-of-type选择器 -->
+		<li><a href="#">first-of-type选择器</a>
+			<div class="wrapper_firstoftype">
+				<div>我是一个块元素,我是.wrapper的第一个子元素</div>
+				<p>我是一个段落元素,我不是.wrapper的第一个子元素,但是它的第一个段落元素</p>
+				<p>我是一个段落元素</p>
+				<div>我是一个块元素</div>
+			</div>
+		</li>
+
+		<!-- nth-of-type(n)选择器 -->
+		<li><a href="#">nth-of-type(n)</a>
+			<div class="wrapper_nthoftype">
+				<div>我是一个div</div>
+				<p>我是一个段落</p>
+				<div>我是一个div</div>
+				<p>我是一个段落</p>
+				<div>我是一个div</div>
+				<p>我是一个段落</p>
+				<div>我是一个div</div>
+				<p>我是一个段落</p>
+			</div></li>
+
+		<!-- last-of-type选择器 -->
+		<li><a href="#">last-of-type</a>
+			<div class="wrapper_lastoftype">
+				<p>我是第一个段落</p>
+				<p>我是第二个段落</p>
+				<p>我是第三个段落</p>
+				<div>我是第一个div</div>
+				<div>我是第二个div</div>
+				<div>我是第三个div</div>
+			</div></li>
+
+		<!-- nth-last-of-type(n)选择器 -->
+		<li><a href="#">nth-last-of-type(n)选择器</a>
+			<div class="wrapper_nthlastoftype">
+				<p>我是第一个段落</p>
+				<p>我是第二个段落</p>
+				<p>我是第三个段落</p>
+				<p>我是第四个段落</p>
+				<p>我是第五个段落</p>
+				<div>我是一个Div元素</div>
+				<p>我是第六个段落</p>
+				<p>我是第七个段落</p>
+			</div></li>
+
+		<!-- only-child选择器 -->
+		<li><a href="#">only-child选择器</a>
+			<div class="post">
+				<p>我是一个段落</p>
+				<p>我是一个段落</p>
+			</div>
+			<div class="post">
+				<p>我是一个段落</p>
+			</div>
+		</li>
+
+		<!-- only-of-type选择器 -->
+		<li><a href="#">only-of-type选择器</a>
+			<div class="wrapper_onlyoftype">
+				<p>我是一个段落</p>
+				<p>我是一个段落</p>
+				<p>我是一个段落</p>
+				<div>我是一个div元素</div>
+			</div>
+			<div class="wrapper_onlyoftype">
+				<div>我是一个div</div>
+				<ul>
+					<li>我是一个列表项</li>
+				</ul>
+				<p>我是一个段落</p>
+			</div>
 		</li>
 	</ol>
 </body>
