@@ -463,8 +463,264 @@ column-span主要用来定义一个分列元素中的子元素能跨列多少。
 column-span:none | all
 
 //CSS3 盒子模型
-CSS中有一种基础设计模式叫盒模型,
+CSS中有一种基础设计模式叫盒模型,盒模型定义了Web页面中的元素中如何来解析。CSS中每一个元素都是一个盒模型,包括html和body标签元素。在盒模型中主要包括width、height、border、background、padding和margin这些属性,而且他们之间的层次关系可以相互影响
+box-sizing ↓
+content-box:默认值,其让元素维持W3C的标准盒模型
+border-box:重新定义CSS2.1中盒模型组成的模式,让元素维持IE传统的盒模型
+inherit:使元素继承父元素的盒模型模式
 
+//CSS3 伸缩布局(一)
+CSS3引入了一种新的布局模式Flexbox布局,即伸缩布局盒模型(Flexible Box),用来提供一个更加有效的方式制定、调整和分布一个容器里项目布局,即使它们的大小未知或者动态的,这里简称为Flex。
+Flexbox布局常用于设计比较复杂的页面,可以轻松的实现屏幕和浏览器窗口大小发生变化时保持元素的相对位置和大小不变,同时减少了依赖于浮动布局实现元素位置的定义以及重置元素的大小。综合而言,Flexbox布局功能主要具有以下几点:
+①屏幕和浏览器窗口大小发生改变也可以灵活调整布局
+②可以指定伸缩项目沿着主轴或侧轴按比例分配额外空间(伸缩容器额外空间),从而调整伸缩项目的大小
+③可以指定伸缩项目沿着主轴或侧轴将伸缩容器额外空间,分配到伸缩项目之前、之后或之间
+④可以指定如何将垂直于元素布局轴的额外空间分布到该元素的周围
+⑤可以控制元素在页面上的布局方向
+⑥可以按照不同于文档对象模型所指定排序方式对屏幕上的元素重新排序。也就是说可以在浏览器渲染中不按照文档流先后顺序重排伸缩项目顺序
+
+⑴创建一个flex容器
+  任何一个flexbox布局的第一步是需要创建一个flex容器。为此给元素设置display属性的值为flex
+  .flexcontainer{display:-webkit-flex;display:flex;}
+⑵Flex项目显示
+  Flex项目是Flex容器的子元素。他们沿着主要轴和横轴定位。默认的是沿着水平轴排列一行。你可以通过flex-direction来改变主轴方向修改column,其默认值是row
+⑶Flex项目列显示
+  .flexcontainer{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;}
+⑷Flex项目移动到顶部
+  如何将flex项目移动到顶部,取决于主轴的方向。如果它是垂直的方向通过align-items设置;如果它是水平的方向通过justify-content设置
+  .flexcontainer{-webkit-flex-direction:column;flex-direction:column;-webkit-justify-content:flex-start;justify-content:flex-start;}
+  .flexcontainer{display:-webkit-flex;display:flex;-webkit-flex-direction:row;-webkit-align-items:flex-start;align-items:flex-start;}
+
+//CSS3 伸缩布局(二)
+Flexbox规范版本众多,浏览器对此语法支持度也各有不同,接下来的内容以最新语法版本为例向大家展示
+⑸Flex项目移到左边
+  flex项目移动到左边或右边也取决于主轴的方向。如果flex-direction设置为row,设置justify-content控制方向;如果设置column,设置align-items控制方向
+  .flexcontainer{display:-webkit-flex;display:flex;-webkit-flex-direction:row;flex-direction:row;-webkit-justify-content:flex-start;justify-content:flex-start;} 
+  .flexcontainer{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;align-items:flex-start;} 
+⑹Flex项目移动右边
+  .flexcontainer{display:-webkit-flex;display:flex;-webkit-flex-direction:row;flex-direction:row;-webkit-justify-content:flex-end;justify-content:flex-end;}
+  .flexcontainer{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:flex-end;align-items:flex-end;}
+⑺水平垂直居中
+  在Flexbox容器中制作水平居中是微不足道的。设置justify-content或者align-items为center.另外根据主轴的方向设置flex-direction为row或column
+  .flexcontainer{display:-webkit-flex;display:flex;-webkit-flex-direction:row;flex-direction:row;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;}  
+  .flexcontainer{display:-webkit-flex;display:flex;-webkit-flex-dire}
+⑻Flex项目实现自动伸缩
+  您可以定义一个flex项目,如何相对于flex容器实现自动的伸缩。需要给每个flex项目设置flex属性设置需要伸缩的值
+  .bigitem{-webkit-flex:200;flex:200;}
+  .smallitem{-webkit-flex:100;flex:100;}  
+    </pre>
+
+	<h4>第11章 Media Queries与Responsive设计</h4>
+	<pre>
+//Media Queries - 媒体类型(一)
+随着科学技术不断的向前发展,网页的浏览终端越多样化,用户可以通过:宽屏电视、台式电脑、笔记本电脑、平板电脑和智能手机来访问你的网站。尽管你无法保证一个网站在不同屏幕尺寸和不同设备上看起来完全一模一样,但至少要让你的Web页面能适配用户的终端,让他更好的呈现在你的用户面前。在本节中,将会学到如何使用CSS3中的Media Queries模块来让一个页面适应不同的终端(或屏幕尺寸),从而让你的页面让用户有一个更好的体验
+Media Queries
+是CSS3新增加的一个模块功能,其最大的特色就是通过CSS3来查询媒体,然后调用对应的样式。其实这个功能在CSS2.1中就有出现过,只不过那个时候此功能并不强大,我们最常见得就是给打印设备添加打印样式。随着时代的变化,这个模块功能越来越强大
+①媒体类型
+可以通过媒体类型对不同的设备制定不同的样式
+ All      所有设备
+ Print    打印用纸或打印预览视图    
+ Screen   电脑显示器
+
+//Media Queries - 媒体类型(二)
+媒体类型的引用方法,常见的有:link标签、@import和CSS3新增的@media几种
+①link方法引入媒体类型其实就是在link标签引用样式的时候,通过link标签中的media属性来指定不同的媒体类型
+ link rel="stylesheet" type="text/css" href="style.css" media="screen"
+ link rel="stylesheet" type="text/css" href="style.css" media="print"
+②@import方法
+ @import可以引用样式文件,同样也可以用来引用媒体类型。一种是在样式中通过@import调用另一个样式文件;另一种方法是在head标签中的style中引入,但这种使用方法
+ head
+ style type="text/css"
+     @importurl(reset.css) screen;
+     @importurl(print.css) print;
+ /style
+ /head
+③@media方法
+ @media是CSS3中新引进的一个特性,被称为媒体查询。在页面中也可以通过这个属性来引入媒体类型
+ ⑴在样式文件中引用媒体类型
+ @media screen{
+       选择器{/*你的样式代码写在这里...*/}
+ }
+ ⑵使用@media引入媒体类型的方式是在head标签中的style中引用
+ head
+ style type="text/css"
+     @media screen{选择器{/*你的样式代码写在这里...*/}}
+ style
+ head
+ 
+//Media Queries使用方法
+Media Queries能在不同的条件下使用不同的样式,使页面在不同的终端设备下达到不同的渲染效果
+ @media 媒体类型and (媒体特征) {你的样式}
+ 注意:使用Media Queries必须要使用'@media'开头,然后指定媒体类型(也可以称为设备类型),随后是指定媒体特征(也可以称之为设备特性)。媒体特性的书写方式和样式的书写方式非常相似,主要分为两个部分,第一个部分指的是媒体特征,第二部分为媒体特性所指定的值,而且这两个部分之间使用冒号分隔
+ max-width:480px
+①最大宽度max-width
+ @media screen and (max-width:480px){
+    .ads{
+        display:none;
+    }
+ }
+ 当屏幕小于或等于480px时,页面中的广告区块将被隐藏 
+②最小宽度min-width
+ @media screen and (min-width:900px){
+    .wrapper{width:980px;}
+ }
+ 当屏幕大于或等于900px时,容器'.wrapper'的宽度为980px
+③多个媒体特性使用
+ Media QUeries可以使用关键词'and'将多个媒体特性结合在一起。也就是说,一个Media Query中可以包含0到多个表达式,表达式又可以包含0到多个关键字,以及一种媒体类型
+ 当屏幕600px-900px之间时,body的背景色渲染为'#f5f5f5'
+ @media screen and (min-width:600px) and (max-width:900px){
+    body{background-color:#f5f5f5;}
+ }
+④设备屏幕的输出宽度Device Width
+ 在智能设备上,还可以根据屏幕设备的尺寸来设置相应的样式(或者调用相应的样式文件)
+ link rel="stylesheet" media="screen and (max-device-width:480px)" href="iphone.css"
+⑤not 关键词
+ 使用关键词'not'是用来排除某种特定的媒体类型,也就是用来排除符合表达式的设备。换句话说,not关键词表示对后面的表达式执行取反操作
+ @media not print and (max-width:1200px){样式代码}
+ 样式代码将被使用在除打印设备和设备宽度小于1200px下所有设备中
+⑥only关键词
+ only用来指定某种特定的媒体类型,可以用来排除不支持媒体查询的浏览器。其实only很多时候是用来对那些不支持Media Query但却支持Media Type的设备隐藏样式表的。其主要有:支持媒体特性的设备,正常调用样式,此时就当only不存在;表示不支持媒体特性但又支持媒体类型的设备,这样就会不读样式,因为其先会读取only而不是screen;另外不支持Media Queries的浏览器,不论是否支持only,样式都不会被采用
+ linkrel="stylesheet" media="only screen and (max-device-width:240px)" href="android240.css"
+ 
+ 在Media Query中如果没有明确指定Media Type,那么其默认为all
+ linkrel="stylesheet" media="(min-width:701px) and (max-width:900px)" href="mediu.css"
+ 
+ 另外在样式中,还可以使用多条语句来将同一个样式应用于不同的媒体类型和媒体特征中
+ linkrel="stylesheet" type="text/css" href="style.css" media="handled and (max-width:480px),screen and (min-width:960px)" 
+ 上面代码中style.css样式被用在宽度小于或等于480px的手持设备上,或者被用于屏幕宽度大于或等于960px的设备上
+ 
+ 到目前为止,CSS3 Media Queries 得到了众多浏览器支持,除了IE6-8浏览器不支持之外,在所有现代浏览器中都可以完美支持。还有一个与众不同的是,Media Queries在其他浏览器中不会像其他CSS3属性一样在不同的浏览器中添加前缀
+    
+//Responsive设计 (一)
+是精心提供各种设备都能浏览网页的一种设计方法,能让你的网页在不同的设备中展现不同的设计风格。不是流体布局,也不是网格布局,而是一种独特的网页设计方法
+响应式设计要考虑元素布局的秩序,而且还需要做到'有求必应',那就需要满足以下三个条件:网站必须建立灵活的网格基础;引用到网站的图片必须是可伸缩的;不同的显示风格,需要在Media Queries上写不同的样式
+①流体网络
+ 流体网络是一个简单的网格系统,这种网格设计参考了流体设计中的网格系统,将每个网格格子使用百分比单位来控制网格大小。这种网格系统最大的好处是让你的网格大小随时根据屏幕尺寸大小做出相对应的比例缩放
+②弹性图片
+ 弹性图片指的是不给图片设置固定尺寸,而是根据流体网格进行缩放,用于适应各种网格的尺寸。而实现方法是比较简单,一句代码就能搞定的事情
+ img{max-width:100%;}
+ 不幸的是,这句代码在IE8浏览器存在一个严重的问题,让你的图片会失踪。当然弹性图片在响应式设计中如何更好的实现,到目前为止都还存在争议,也还在不断地改善之中
+ 为每一个断点提供不同的图片,这是一个比较头痛的事情,因为Media Queries并不能改变图片'src'的属性值,可以参考一下下面的解决方法。使用background-image给元素使用背景图片,显示/隐藏父元素,给父元素使用不同的图片,然后通过Media Queries来控制这些图片显示或隐藏
+ 
+ 'img src="image.jpg" data-src-600px="image-600px.jpg" data-src-800px="image-800px.jpg" alt="" '
+ @media (min-device-width:600px){
+     img[data-src-600px]{
+         content:attr(data-src-600px,url);
+     }
+ }
+ @media (min-device-width:800px){
+     img[data-src-800px]{
+         content:attr(data-src-800px,url);
+     }
+ }
+ 请注意:这仅仅是解决响应式图片自适应的一种思路,但这种方案仅仅是陪的断点较少,并不太实用
+③媒体查询
+ 媒体查询在CSS3中得到了强大的扩展。使用这个属性可以让你的设计根据用户终端设备适配对应的样式。这也是响应式设计中最为关键的。可以说Responsive设计离开了Media Queries就失去了他生存的意义。简单的说媒体查询可以根据设备的尺寸,查询出适配的样式。Responsive设计最关注的就是:根据用户的使用设备的当前宽度,你的Web页面降价在一个备用的样式,实现特定的页面风格。
+
+//Responsive设计 (二)
+④屏幕分辨率
+ 屏幕分辨率简单点说就是用户显示器的分辨率,深一点说,屏幕分辨率指的是用户使用的设备浏览您的Web页面时的显示屏幕的分辨率,比如说智能手机浏览器、移动电脑浏览器、平板电脑浏览器和桌面浏览器的分辨率。Responsive设计利用Media Queries属性针对浏览器使用的分辨率来适配对应的CSS样式。因此屏幕分辨率在Responsive设计中是一个很重要的东西,因为只有知道Web页面要在哪种分辨率下显示何种效果,才能调用对应的样式
+⑤主要断点
+ 主要断点,在Web开发中是一个新词,但对于Responsive设计中是一个很重要的一部分。简单的描述就是,设备宽度的临界点。在Media Queries中,其中媒体特性'min-width'和'max-width'对应的属性值就是响应式设计中的断点值.
+ 简单点说,就是使用主要断点和次要断点,创建媒体查询的条件。而每个断点会对应调用一个样式文件(或者样式代码)
+ 综合下来,设置断点应把握三个要点:满足主要的断点;有可能的话添加一些别的断点;这只高于1024的桌面断点
+    
+//Responsive布局技巧    
+在Responsive布局中,可以毫无保留的丢弃:
+①尽量少用无关紧要的div
+②不要使用内联元素(inline)
+③尽量少用JS或flash
+④丢弃没用的绝对定位和浮动样式
+⑤摒弃任何冗余结构和不使用100%设置
+
+正确使用:
+①使用HTML5 Doctype和相关指南
+②重置好你的样式(reset.css)
+③一个简单的有语义的核心布局
+④给重要的网页元素使用简单的技巧,比如导航菜单之类元素
+
+使用这些技巧,无非是为了保持你的HTML简单干净,而且在你的页面布局中的关键部分(元素)不要过分的依赖现代技巧来实现,比如说CSS3特效或者JS脚本    
+说了这么多,怎么样的布局或者说HTML结构才是简单干净的呢?这里教大家一个快速测试的方法。你首先禁掉你页面中所有的样式(以及与样式相关的信息),如果你的内容排列有序,方便阅读,那么你的这个结构不会差到哪里去    
+   
+//Responsive设计 meta标签
+可以说,在响应式设计中如果没有这个meta标签,你就是蹩脚的,响应式设计就是空谈。被称为可视区域meta标签
+'meta name="viewport" content="" '
+
+在实际项目中,为了让Responsive设计在智能设备中能显示正常,也就是浏览Web页面适应屏幕的大小,显示在屏幕上,可以通过这个可视区域的meta标签进行重置,告诉他使用设备的宽度为可视的宽度,也就是说禁止其默认的自适应页面的效果
+'meta name="viewport" content="width=device-width,initial-scale=1.0" '  
+    
+另外一点,由于Responsive设计是结合CSS3的Media Queries属性,才能尽显Responsive设计风格,但在IE6-8中完全是不支持CSS3 Media。下面我们一起来看看CSS3 Media Queries在标准设备上的运用,大家可以把这些样式加到你的样式文件中,或者单独创建一个名为'responsive.css'文件,并在相应的条件中写上你的样式,让他适合你的设计需求
+
+//Responsive设计 不同设备的分辨率设置
+下面我们一起来看看CSS3 Media Queries在标准设备上的运用,大家可以把这些样式加到你的样式文件中,或者单独创建一个名为'responsive.css'文件,并在相应的条件中写上你的样式,让他设和你的设计需求
+①1024px显屏
+ @media screen and (max-width:1024px){/*样式写在这里*/}
+②800px显屏
+ @media screen and (max-width:800px){/*样式写在这*/}
+③640px显屏
+ @media screen and (max-width:640px){/*样式写在这*/}
+④iPad横版显屏
+ @media screen and (max-device-width:1024px) and orientation:landscape{/*样式写在这*/}
+⑤iPad竖版显屏
+ @media screen and (max-device-width:768px) and orientation:portrait{/*样式写在这*/}
+⑥iPhone和Smartphones
+ @media screen and (min-device-width:320px) and (min-device-width:480px){/*样式写在这*/} 
+    </pre>
+
+	<h4>第12章 用户界面与其它重要属性</h4>
+	<pre>
+//自由缩放属性resize    
+为了增强用户体验,CSS3增加了很多新的属性,其中resize就是一个重要的属性,它允许用户通过拖动的方式来修改元素的尺寸来改变元素的大小。到目前为止,可以使用overflow属性的任何容器元素
+在此之前,Web设计师为了要实现这样具有拖动效果的UI,使用大量的脚本代码才能实现,这样费时费力,效率极低
+resize属性主要是用来改变元素尺寸大小的,其主要目的是增强用户体验。但使用方法却是极其的简单,先从其语法入手
+resize:
+①none → 用户不能拖动元素修改尺寸大小
+②both → 用户可以拖动元素,同时修改元素的宽度和高度
+③horizontal → 用户可以拖动元素,仅可以修改元素的宽度,但不能修改元素的高度
+④vertical → 用户可以拖动元素,仅可以修改元素的高度,但不能修改元素的宽度
+⑤inherit → 继承父元素的resize属性值
+textarea{
+    -webkit-resize:horizontal;
+    -moz-resize:horizontal;
+    -o-resize:horizontal;
+    -ms-resize:horizontal;
+    resize:horizontal;
+}
+
+//CSS3外轮廓属性
+外轮廓outline在页面中呈现的效果和边框border呈现的效果极其相似,但和元素边框border完全不同,外轮廓线不占用网页布局空间,不一定是矩形,外轮廓是属于一种动态样式,只有元素获取到焦点或者激活时呈现
+outline属性早在CSS2中就出现了,主要是用来在元素周围绘制一条轮廓线,可以起到突出元素的作用。但是并未得到各主流浏览器的广泛支持,在CSS3中对outline作了一定的扩展,在以前的基础上增加新特征
+outline:
+①outline-color → 定义轮廓线的颜色,属性值为CSS中定义的颜色值。在实际应用中,可以将此参数省略,省略时此参数的默认值为黑色
+②outline-style → 定义轮廓线的样式,属性为CSS中定义线的样式。在实际应用中,可以将此参数省略,省略时此参数的默认值为none,省略后不对该轮廓线进行任何绘制
+③outline-width → 定义轮廓线的宽度,属性值可以为一个宽度值。在实际应用中,可以将此参数省略,省略时此参数的默认值为medium,表示绘制中等宽度的轮廓线
+④outline-offset → 定义轮廓边框的偏移位置的数值,此值可以取负数值。当此参数的值为正数值,表示轮廓边框向外偏离多少个像素;当此参数的值为负数值,表示轮廓边框向内偏移多少个像素
+⑤inherit → 元素继承父元素的outline效果
+
+//CSS生成内容
+在Web中插入内容,在CSS2.1时代依靠的是JavaScript来实现。但进入CSS3近代以后我们可以通过CSS3的伪类':before',':after'和CSS3的伪元素'::before'、'::after'来实现,其关键是依靠CSS3中的'content'属性来实现。不过这个属性对于img和input元素不起作用
+content配合CSS的伪类或者伪元素,一般可以做以下四件事情↓
+①none → 不生成任何内容
+②attr → 插入标签属性值
+③url → 使用指定的绝对或相对地址插入一个外部资源(图像,声频,视频或浏览器支持的其他任何资源)
+④string → 插入字符串
+在CSS中有一种清除浮动的方法叫'clearfix'。而这个'clearfix'方法中就是用了'content',只不过只是在这里插入了一个空格
+.clearfix:before,
+.clearfix:after{
+    content:"";
+    display:table;
+}
+.clearfix:after{
+    clear:both;
+    overflow:hidden;
+}
+'a href="##" title="我是一个title属性值,我插到你的后面"'我是元素
+a:after{
+    content:attr(title);
+    color:#f00;
+}
+
+//制作3D旋转视频展示区
     </pre>
 </body>
 </html>

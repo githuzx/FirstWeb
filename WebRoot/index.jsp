@@ -100,6 +100,8 @@ a {
 					title="Hello CSS3">①helloCSS3.jsp</a> <a
 					href="page/css3basic/doraemon.jsp" target="_blank" title="哆啦A梦">②doraemon.jsp</a>
 					<a href="page/css3basic/icFba.jsp" target="_blank" title="制作3D旋转导航">③icFba.jsp</a>
+					<a href="page/css3basic/videoShow.jsp" target="_blank"
+					title="制作3D旋转视频展示区">④videoShow.jsp</a>
 				</li>
 			</ol>
 		</li>
