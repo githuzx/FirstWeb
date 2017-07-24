@@ -105,6 +105,15 @@ a {
 				</li>
 			</ol>
 		</li>
+
+		<!-- Html5 -->
+		<li>Html5:
+			<ol>
+				<li><a href="page/html5_basic.jsp" target="_blank"
+					title="HTML5之元素与标签结构">html5_basic.jsp</a>
+				</li>
+			</ol>
+		</li>
 	</ul>
 </body>
 </html>
