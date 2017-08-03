@@ -61,6 +61,9 @@ a {
 				<li><a href="page/htmlcss_art.jsp" target="_blank"
 					title="网页简单布局之结构与表现原则">art.jsp</a>
 				</li>
+				<li><a href="page/htmlcss_entSite.jsp" target="_blank"
+					title="企业网站综合布局实战">entSite.jsp - waiting</a>
+				</li>
 			</ol>
 		</li>
 
@@ -77,6 +80,13 @@ a {
 			</ol>
 		</li>
 
+		<!-- jQuery -->
+		<li>jQuery:
+			<ol>
+				<li><a href="page/jquery_basic_style.jsp" target="_blank"
+					title="jQuery基础(一)——样式篇">style.jsp</a></li>
+			</ol>
+		</li>
 
 		<!-- DB -->
 		<li>DB:
