@@ -41,7 +41,7 @@ a {
 
 <body>
 	<h2>属性筛选选择器</h2>
-	<h3>[att=val]、[att]、[att|=val]、[att~=val]</h3>
+	<h3>[att=val]/[att]/[att|=val]/[att~=val]</h3>
 	<div class="left" testattr="true">
 		<div class="div" testattr="true" name="p1">
 			<a>[att = val]</a>
@@ -63,7 +63,7 @@ a {
 		$('div[name~="a"]').css("border", "1px solid orange");
 	</script>
 
-	<h3>[att^=val]、[att$=val]、[att*=val]、[att!=val]</h3>
+	<h3>[att^=val]/[att$=val]/[att*=val]/[att!=val]</h3>
 	<div class="left" testattr="true">
 		<div class="div" testattr="true" name="imooc-aaron">
 			<a>[att ^= val]</a>
