@@ -183,7 +183,7 @@
 					</div>
 					<div class="video_content">
 						<embed
-							src="https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&v=20161117&vid=b0024zkv4ab&auto=0"
+							src="https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&v=20161117&vid=b0024zkv4ab&auto=1"
 							allowFullScreen="true" quality="high" width="230" height="140"
 							align="middle" allowScriptAccess="always"
 							type="application/x-shockwave-flash"></embed>
