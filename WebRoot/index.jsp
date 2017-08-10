@@ -61,8 +61,10 @@ a {
 				<li><a href="page/htmlcss_art.jsp" target="_blank"
 					title="网页简单布局之结构与表现原则">art.jsp</a>
 				</li>
-				<li><a href="page/htmlcss_entSite.jsp" target="_blank"
-					title="企业网站综合布局实战">entSite.jsp - waiting</a>
+				<li><a href="page/htmlcss_corpsite.jsp" target="_blank"
+					title="企业网站综合布局实战">corpsite.jsp</a> <!-- practice -->
+					&nbsp;&nbsp;&nbsp;<a href="page/layoutbasic/corpsite/index.jsp"
+					target="_blank" title="慕课网">①imooc.jsp</a>
 				</li>
 			</ol>
 		</li>
